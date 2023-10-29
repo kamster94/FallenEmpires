@@ -1,9 +1,16 @@
 import React, { ReactNode } from 'react';
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Eczar } from 'next/font/google';
 import './globals.css';
+import Header from '@/components/Layout/Header';
+import Footer from '@/components/Layout/Footer';
+import background from '../../public/background.jpg';
 
-const inter = Inter({ subsets: ['latin'] });
+const eczar = Eczar({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-eczar',
+});
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -17,7 +24,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={eczar.variable} style={{ backgroundImage: `url(${background.src})` }}>
+        <div className="flex h-screen flex-col justify-between font-sans">
+          <Header />
+          <main className="mb-auto">
+            {children}
+          </main>
+          <Footer />
+        </div>
+      </body>
     </html>
   );
 }
