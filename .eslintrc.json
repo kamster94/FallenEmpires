@@ -1,3 +1,17 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": ["next/core-web-vitals", "airbnb-base"],
+  "rules": {
+    "no-unused-vars": "warn",
+    "import/prefer-default-export": "off",
+    "import/extensions": "off",
+    "max-len": "off",
+    "arrow-body-style": "off",
+    "import/no-extraneous-dependencies": ["error", {"devDependencies": true}],
+    "quotes": ["error", "single"],
+    "react/jsx-indent": ["error", 2],
+    "indent": ["error", 2, {
+      "SwitchCase": 1,
+      "ignoreComments": false
+    }]
+  }
 }
