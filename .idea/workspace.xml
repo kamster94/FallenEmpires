@@ -4,24 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8dc61529-bcb5-40ce-8862-0fcba735b36d" name="Changes" comment="Adjusted editorconfig and eslint">
-      <change afterPath="$PROJECT_DIR$/public/background.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/logo.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/paper.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/icon.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Layout/Footer.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Layout/Header.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Layout/Page.tsx" afterDir="false" />
+    <list default="true" id="8dc61529-bcb5-40ce-8862-0fcba735b36d" name="Changes" comment="Base layout">
+      <change afterPath="$PROJECT_DIR$/src/components/Navigation/MainNavigation.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Navigation/NavigationCategory.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Navigation/NavigationItem.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/next.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/vercel.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/favicon.ico" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/globals.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tailwind.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Layout/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/Header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Layout/Page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/Page.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,6 +71,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\kamil\source\repos\FallenEmpires\src\components\Navigation" />
       <recent name="C:\Users\kamil\source\repos\FallenEmpires\public" />
     </key>
   </component>
@@ -104,7 +97,9 @@
       <updated>1698572064799</updated>
       <workItem from="1698572072358" duration="904000" />
       <workItem from="1698575642313" duration="6316000" />
-      <workItem from="1698583696442" duration="3006000" />
+      <workItem from="1698583696442" duration="3907000" />
+      <workItem from="1698608721804" duration="6603000" />
+      <workItem from="1698684027093" duration="7569000" />
     </task>
     <task id="LOCAL-00001" summary="Installed Next.js">
       <option name="closed" value="true" />
@@ -122,7 +117,15 @@
       <option name="project" value="LOCAL" />
       <updated>1698576022200</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Base layout">
+      <option name="closed" value="true" />
+      <created>1698588438635</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1698588438635</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -139,6 +142,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Installed Next.js" />
     <MESSAGE value="Adjusted editorconfig and eslint" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adjusted editorconfig and eslint" />
+    <MESSAGE value="Base layout" />
+    <option name="LAST_COMMIT_MESSAGE" value="Base layout" />
   </component>
 </project>

@@ -1,9 +1,6 @@
 import React from 'react';
 
-interface Props {
-}
-
-const Footer = (props: Props) => {
+const Footer = () => {
   return (
     <footer>
       <div className="mt-16 flex flex-col items-center">
