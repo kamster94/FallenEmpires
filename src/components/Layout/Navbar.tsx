@@ -8,7 +8,7 @@ import { faBars, faRightToBracket, faXmark } from '@fortawesome/free-solid-svg-i
 import MainNavigation from '@/components/Navigation/MainNavigation';
 import { Disclosure } from '@headlessui/react';
 
-const Header = () => {
+const Navbar = () => {
   return (
     <Disclosure as="header" className="flex flex-col items-center justify-start py-1 bg-primary text-white md:h-16 px-6 lg:px-8">
       {({ open }) => (
@@ -40,4 +40,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default Navbar;

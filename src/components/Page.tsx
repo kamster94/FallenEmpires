@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import paper from '../../../public/paper.jpg';
+import paper from '../../public/paper.jpg';
 
 interface Props {
   children?: ReactNode;

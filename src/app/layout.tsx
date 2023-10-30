@@ -2,7 +2,7 @@ import React, { ReactNode } from 'react';
 import type { Metadata } from 'next';
 import { Eczar } from 'next/font/google';
 import './globals.css';
-import Header from '@/components/Layout/Header';
+import Navbar from '@/components/Layout/Navbar';
 import Footer from '@/components/Layout/Footer';
 import background from '../../public/background.jpg';
 
@@ -26,7 +26,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={eczar.variable} style={{ backgroundImage: `url(${background.src})` }}>
         <div className="flex h-screen flex-col justify-between font-sans">
-          <Header />
+          <Navbar />
           <main className="mb-auto mx-auto flex-1 px-4 lg:px-48 container">
             {children}
           </main>

@@ -4,16 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8dc61529-bcb5-40ce-8862-0fcba735b36d" name="Changes" comment="Base layout">
-      <change afterPath="$PROJECT_DIR$/src/components/Navigation/MainNavigation.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Navigation/NavigationCategory.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Navigation/NavigationItem.tsx" afterDir="false" />
+    <list default="true" id="8dc61529-bcb5-40ce-8862-0fcba735b36d" name="Changes" comment="Header layout">
+      <change afterPath="$PROJECT_DIR$/public/decoration.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/BlockWithDecoration.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/PageHeader.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/Header.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/Page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/Page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Layout/Footer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/Footer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Layout/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/Navbar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Layout/Page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Page.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,25 +52,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.ide.settings.file-colors&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\kamil\\source\\repos\\FallenEmpires\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/kamil/source/repos/FallenEmpires/public",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "reference.settings.ide.settings.file-colors",
+    "ts.external.directory.path": "C:\\Users\\kamil\\source\\repos\\FallenEmpires\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\kamil\source\repos\FallenEmpires\public" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\kamil\source\repos\FallenEmpires\src\components" />
       <recent name="C:\Users\kamil\source\repos\FallenEmpires\src\components\Navigation" />
       <recent name="C:\Users\kamil\source\repos\FallenEmpires\public" />
     </key>
@@ -99,7 +104,7 @@
       <workItem from="1698575642313" duration="6316000" />
       <workItem from="1698583696442" duration="3907000" />
       <workItem from="1698608721804" duration="6603000" />
-      <workItem from="1698684027093" duration="7569000" />
+      <workItem from="1698684027093" duration="11765000" />
     </task>
     <task id="LOCAL-00001" summary="Installed Next.js">
       <option name="closed" value="true" />
@@ -125,7 +130,15 @@
       <option name="project" value="LOCAL" />
       <updated>1698588438635</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Header layout">
+      <option name="closed" value="true" />
+      <created>1698698980827</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1698698980827</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -143,6 +156,7 @@
     <MESSAGE value="Installed Next.js" />
     <MESSAGE value="Adjusted editorconfig and eslint" />
     <MESSAGE value="Base layout" />
-    <option name="LAST_COMMIT_MESSAGE" value="Base layout" />
+    <MESSAGE value="Header layout" />
+    <option name="LAST_COMMIT_MESSAGE" value="Header layout" />
   </component>
 </project>
