@@ -4,16 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8dc61529-bcb5-40ce-8862-0fcba735b36d" name="Changes" comment="Header layout">
-      <change afterPath="$PROJECT_DIR$/public/decoration.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/BlockWithDecoration.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/PageHeader.tsx" afterDir="false" />
+    <list default="true" id="8dc61529-bcb5-40ce-8862-0fcba735b36d" name="Changes" comment="Page layout test">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/Footer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/Footer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/Navbar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/Page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Page.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,7 +96,7 @@
       <workItem from="1698575642313" duration="6316000" />
       <workItem from="1698583696442" duration="3907000" />
       <workItem from="1698608721804" duration="6603000" />
-      <workItem from="1698684027093" duration="11765000" />
+      <workItem from="1698684027093" duration="12364000" />
     </task>
     <task id="LOCAL-00001" summary="Installed Next.js">
       <option name="closed" value="true" />
@@ -138,7 +130,15 @@
       <option name="project" value="LOCAL" />
       <updated>1698698980827</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Page layout test">
+      <option name="closed" value="true" />
+      <created>1698702867506</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1698702867506</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -157,6 +157,7 @@
     <MESSAGE value="Adjusted editorconfig and eslint" />
     <MESSAGE value="Base layout" />
     <MESSAGE value="Header layout" />
-    <option name="LAST_COMMIT_MESSAGE" value="Header layout" />
+    <MESSAGE value="Page layout test" />
+    <option name="LAST_COMMIT_MESSAGE" value="Page layout test" />
   </component>
 </project>
