@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8dc61529-bcb5-40ce-8862-0fcba735b36d" name="Changes" comment="Page layout test">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="8dc61529-bcb5-40ce-8862-0fcba735b36d" name="Changes" comment="Admin section test" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,6 +18,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="TypeScript File" />
         <option value="TypeScript JSX File" />
       </list>
     </option>
@@ -51,7 +50,7 @@
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/kamil/source/repos/FallenEmpires/public",
+    "last_opened_file_path": "C:/Users/kamil/source/repos/FallenEmpires/src/app/admin",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -64,6 +63,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\kamil\source\repos\FallenEmpires\src\app\admin" />
       <recent name="C:\Users\kamil\source\repos\FallenEmpires\public" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -97,6 +97,7 @@
       <workItem from="1698583696442" duration="3907000" />
       <workItem from="1698608721804" duration="6603000" />
       <workItem from="1698684027093" duration="12364000" />
+      <workItem from="1698772294960" duration="9528000" />
     </task>
     <task id="LOCAL-00001" summary="Installed Next.js">
       <option name="closed" value="true" />
@@ -138,7 +139,23 @@
       <option name="project" value="LOCAL" />
       <updated>1698702867506</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Login through auth0">
+      <option name="closed" value="true" />
+      <created>1698786148832</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1698786148832</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Admin section test">
+      <option name="closed" value="true" />
+      <created>1698790009103</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1698790009103</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -158,6 +175,8 @@
     <MESSAGE value="Base layout" />
     <MESSAGE value="Header layout" />
     <MESSAGE value="Page layout test" />
-    <option name="LAST_COMMIT_MESSAGE" value="Page layout test" />
+    <MESSAGE value="Login through auth0" />
+    <MESSAGE value="Admin section test" />
+    <option name="LAST_COMMIT_MESSAGE" value="Admin section test" />
   </component>
 </project>
