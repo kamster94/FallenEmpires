@@ -29,7 +29,7 @@ export default function RootLayout({
         <body className={eczar.variable} style={{ backgroundImage: `url(${background.src})` }}>
           <div className="flex h-screen flex-col justify-between font-sans">
             <Navbar />
-            <main className="mb-auto mx-auto flex-1 px-4 lg:px-48 container">
+            <main className="mb-auto mx-auto flex-1 px-4 md:px-24 lg:px-32 xl:px-48 w-full">
               {children}
             </main>
             <Footer />

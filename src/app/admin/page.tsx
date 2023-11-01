@@ -1,6 +1,6 @@
 export default function Admin() {
   return (
-    <div className="w-full md:px-12 space-y-2">
+    <div className="w-full">
       <p>
         Admin page test
       </p>

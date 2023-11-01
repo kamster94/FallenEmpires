@@ -15,7 +15,7 @@ const Navbar = () => {
       {({ open }) => (
         <>
           <div className="flex items-center justify-start w-full h-16">
-            <Disclosure.Button className="flex items-center justify-center">
+            <Disclosure.Button className="flex items-center justify-center md:hidden">
               <FontAwesomeIcon icon={open ? faXmark : faBars} width={15} height={15} className="block md:hidden" />
             </Disclosure.Button>
             <div className="flex items-center justify-center w-full md:w-auto md:justify-start">
@@ -29,7 +29,7 @@ const Navbar = () => {
               <UserMenu />
             </div>
           </div>
-          <Disclosure.Panel className="md:hidden flex">
+          <Disclosure.Panel className="md:hidden flex mb-4">
             <MainNavigation className="flex flex-col"/>
           </Disclosure.Panel>
         </>

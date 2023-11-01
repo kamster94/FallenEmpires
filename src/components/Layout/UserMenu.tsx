@@ -15,10 +15,10 @@ const UserMenu = () => {
 
   if (!user) {
     return (
-      <div className="flex items-center space-x-2 text-secondary hover:text-white">
+      <a href="/api/auth/login" className="flex items-center space-x-2 text-secondary hover:text-white">
         <FontAwesomeIcon icon={faRightToBracket} width={18} height={18}/>
-        <a href="/api/auth/login"><span className="hidden md:block">Sign in</span></a>
-      </div>
+        <span className="hidden md:block">Sign in</span>
+      </a>
     );
   }
 
