@@ -7,9 +7,14 @@ interface Props {
 
 const BlockWithDecoration = ({ children }: Props) => {
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col w-full max-w-xl">
       {children}
-      <div className="h-8" style={{ backgroundImage: `url(${decoration.src})`, backgroundSize: 'contain', backgroundRepeat: 'no-repeat' }}/>
+      <div className="h-8" style={{
+        backgroundImage: `url(${decoration.src})`,
+        backgroundSize: 'contain',
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'center',
+      }}/>
     </div>
   );
 };
