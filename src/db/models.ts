@@ -4,52 +4,40 @@ import { drizzle as drizzleVercel } from 'drizzle-orm/vercel-postgres';
 import { drizzle as drizzlePostgres } from 'drizzle-orm/postgres-js';
 import postgres from 'postgres';
 import dotenv from 'dotenv';
-import {
-  AncestriesTable,
-  AncestriesTagsTable,
-  CampaignsTable,
-  FeatsTable,
-  FeatsTagsTable,
-  HeritagesTable,
-  HeritagesTagsTable,
-  PostsTable,
-  RulePagesTable,
-  SettingPagesTable,
-  TagsTable,
-} from '@/db/schema';
+import * as schema from '@/db/schema';
 
 dotenv.config();
 
-export type Campaign = InferSelectModel<typeof CampaignsTable>;
-export type NewCampaign = InferInsertModel<typeof CampaignsTable>;
+export type Campaign = InferSelectModel<typeof schema.CampaignsTable>;
+export type NewCampaign = InferInsertModel<typeof schema.CampaignsTable>;
 
-export type Post = InferSelectModel<typeof PostsTable>;
-export type NewPost = InferInsertModel<typeof PostsTable>;
+export type Post = InferSelectModel<typeof schema.PostsTable>;
+export type NewPost = InferInsertModel<typeof schema.PostsTable>;
 
-export type RulePage = InferSelectModel<typeof RulePagesTable>;
-export type NewRulePage = InferInsertModel<typeof RulePagesTable>;
+export type RulePage = InferSelectModel<typeof schema.RulePagesTable>;
+export type NewRulePage = InferInsertModel<typeof schema.RulePagesTable>;
 
-export type SettingPage = InferSelectModel<typeof SettingPagesTable>;
-export type NewSettingPage = InferInsertModel<typeof SettingPagesTable>;
+export type SettingPage = InferSelectModel<typeof schema.SettingPagesTable>;
+export type NewSettingPage = InferInsertModel<typeof schema.SettingPagesTable>;
 
-export type Tag = InferSelectModel<typeof TagsTable>;
-export type NewTag = InferInsertModel<typeof TagsTable>;
+export type Tag = InferSelectModel<typeof schema.TagsTable>;
+export type NewTag = InferInsertModel<typeof schema.TagsTable>;
 
-export type Ancestry = InferSelectModel<typeof AncestriesTable>;
-export type NewAncestry = InferInsertModel<typeof AncestriesTable>;
+export type Ancestry = InferSelectModel<typeof schema.AncestriesTable>;
+export type NewAncestry = InferInsertModel<typeof schema.AncestriesTable>;
 
-export type AncestryTag = InferSelectModel<typeof AncestriesTagsTable>;
+export type AncestryTag = InferSelectModel<typeof schema.AncestriesTagsTable>;
 
-export type Heritage = InferSelectModel<typeof HeritagesTable>;
-export type NewHeritage = InferInsertModel<typeof HeritagesTable>;
+export type Heritage = InferSelectModel<typeof schema.HeritagesTable>;
+export type NewHeritage = InferInsertModel<typeof schema.HeritagesTable>;
 
-export type HeritageTag = InferSelectModel<typeof HeritagesTagsTable>;
+export type HeritageTag = InferSelectModel<typeof schema.HeritagesTagsTable>;
 
-export type Feat = InferSelectModel<typeof FeatsTable>;
-export type NewFeat = InferInsertModel<typeof FeatsTable>;
+export type Feat = InferSelectModel<typeof schema.FeatsTable>;
+export type NewFeat = InferInsertModel<typeof schema.FeatsTable>;
 
-export type FeatTag = InferSelectModel<typeof FeatsTagsTable>;
+export type FeatTag = InferSelectModel<typeof schema.FeatsTagsTable>;
 
 export const db = process.env.LOCAL_DATABASE_URL
-  ? drizzlePostgres(postgres(process.env.LOCAL_DATABASE_URL))
-  : drizzleVercel(sql);
+  ? drizzlePostgres(postgres(process.env.LOCAL_DATABASE_URL), { schema })
+  : drizzleVercel(sql, { schema });

@@ -18,7 +18,7 @@ const defaultSettingLinks: NavigationIemProps[] = [
   },
   {
     label: 'Backgrounds',
-    route: 'admin/setting/backgrounds',
+    route: 'admin/setting/ancestries',
   },
   {
     label: 'Languages',

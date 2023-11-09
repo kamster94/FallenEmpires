@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import NavigationItem from '@/components/Navigation/NavigationItem';
 import { Menu } from '@headlessui/react';
@@ -29,9 +31,9 @@ const NavigationCategoryMenu = ({ navigationCategory }: Props) => {
                       <button
                         className={`${
                           active ? 'bg-primary text-white' : 'text-gray-900'
-                        } group flex w-full items-center px-2 py-2 text-sm`}
+                        } group flex w-full items-center text-sm`}
                       >
-                        <NavigationItem navigationItem={navigationItem} className="w-full"/>
+                        <NavigationItem navigationItem={navigationItem} className="w-full h-full p-2"/>
                       </button>
                     )}
                   </Menu.Item>

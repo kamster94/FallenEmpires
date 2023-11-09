@@ -1,15 +1,19 @@
 'use client';
 
-import React from 'react';
+import React, { ReactNode } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons';
-import MainNavigation from '@/components/Navigation/MainNavigation';
 import { Disclosure } from '@headlessui/react';
 import UserMenu from '@/components/Layout/UserMenu';
 
-const Navbar = () => {
+interface Props {
+  mainNavigation?: ReactNode;
+  mobileNavigation?: ReactNode;
+}
+
+const Navbar = ({ mainNavigation, mobileNavigation }: Props) => {
   return (
     <Disclosure as="header" className="flex flex-col items-center justify-start py-1 bg-primary text-white md:h-16 px-6 lg:px-8">
       {({ open }) => (
@@ -24,13 +28,13 @@ const Navbar = () => {
                 <span>Age of Fallen Empires</span>
               </Link>
             </div>
-            <MainNavigation className="hidden md:flex items-center justify-start"/>
+            {mainNavigation}
             <div className="flex-auto flex items-center justify-end">
               <UserMenu />
             </div>
           </div>
           <Disclosure.Panel className="md:hidden flex mb-4">
-            <MainNavigation className="flex flex-col"/>
+            {mobileNavigation}
           </Disclosure.Panel>
         </>
       )}
