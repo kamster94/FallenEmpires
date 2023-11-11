@@ -1,9 +1,10 @@
 import Image from 'next/image';
+import Section from '@/components/Section';
 
 export default function Admin() {
   return (
-    <div className="flex w-full justify-center">
+    <Section className="justify-center">
       <Image src="/wizard.png" alt="Admin Wizard" width={400} height={400} />
-    </div>
+    </Section>
   );
 }

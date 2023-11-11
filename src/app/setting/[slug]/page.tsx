@@ -2,6 +2,7 @@ import Page from '@/components/Page';
 import PageHeader from '@/components/PageHeader';
 import useDatabase from '@/hooks/useDatabase';
 import { notFound } from 'next/navigation';
+import MarkdownContent from '@/components/Markdown/MarkdownContent';
 
 export default async function CustomSettingPage({ params }: { params: { slug: string } }) {
   const { getSettingPage } = useDatabase();
@@ -13,7 +14,7 @@ export default async function CustomSettingPage({ params }: { params: { slug: st
   return (
     <Page>
       <PageHeader title={settingPage.title} />
-      {settingPage.text}
+      <MarkdownContent>{settingPage.text}</MarkdownContent>
     </Page>
   );
 }
