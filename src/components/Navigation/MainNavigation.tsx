@@ -1,10 +1,13 @@
-import React from 'react';
+'use client';
+
+import React, { useEffect, useState } from 'react';
 import {
   faBook, faDiceD20, faFlag, faGlobe, faNewspaper,
 } from '@fortawesome/free-solid-svg-icons';
 import NavigationCategoryMenu from '@/components/Navigation/NavigationCategoryMenu';
 import { NavigationIemProps } from '@/components/Navigation/NavigationItem';
-import useDatabase from '@/hooks/useDatabase';
+import { Campaign, RulePage, SettingPage } from '@/db/models';
+import { getAllCampaigns, getAllRulePages, getAllSettingPages } from '@/app/actions';
 
 interface Props {
   className?: string;
@@ -44,23 +47,37 @@ const defaultRulesLinks: NavigationIemProps[] = [
   },
 ];
 
-async function MainNavigation({ className }: Props) {
-  const { getAllSettingPages, getAllRulePages, getAllCampaigns } = useDatabase();
-  const databaseSettingLinks: NavigationIemProps[] = (await getAllSettingPages()).map((settingPage) => {
+function MainNavigation({ className }: Props) {
+  const [settingPages, setSettingPages] = useState<SettingPage[]>([]);
+  const [rulePages, setRulePages] = useState<RulePage[]>([]);
+  const [campaigns, setCampaigns] = useState<Campaign[]>([]);
+  useEffect(() => {
+    getAllSettingPages().then((loadedSettingPages) => {
+      setSettingPages(loadedSettingPages);
+    });
+    getAllRulePages().then((loadedRulePages) => {
+      setRulePages(loadedRulePages);
+    });
+    getAllCampaigns().then((loadedCampaigns) => {
+      setCampaigns(loadedCampaigns);
+    });
+  }, []);
+
+  const databaseSettingLinks: NavigationIemProps[] = settingPages.map((settingPage) => {
     return {
       label: settingPage.title,
       route: `/setting/${settingPage.slug}`,
     };
   });
 
-  const databaseRuleLinks: NavigationIemProps[] = (await getAllRulePages()).map((rulePage) => {
+  const databaseRuleLinks: NavigationIemProps[] = rulePages.map((rulePage) => {
     return {
       label: rulePage.title,
       route: `/rule/${rulePage.slug}`,
     };
   });
 
-  const databaseCampaignLinks: NavigationIemProps[] = (await getAllCampaigns()).map((campaign) => {
+  const databaseCampaignLinks: NavigationIemProps[] = campaigns.map((campaign) => {
     return {
       label: campaign.name,
       route: `/campaign/${campaign.slug}`,
