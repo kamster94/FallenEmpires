@@ -1,13 +1,12 @@
-import useDatabase from '@/hooks/useDatabase';
 import { notFound } from 'next/navigation';
 import Section from '@/components/Section';
 import SectionHeader from '@/components/SectionHeader';
 import SettingPageForm from '@/components/Forms/SettingPageForm';
 import ButtonLink from '@/components/ButtonLink';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { getSettingPage } from '@/app/actions';
 
 export default async function AdminGeneralSettingsEdit({ params }: { params: { slug: string } }) {
-  const { getSettingPage } = useDatabase();
   const settingPage = await getSettingPage(params.slug);
   if (!settingPage) {
     return notFound();

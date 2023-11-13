@@ -3,27 +3,27 @@
 import React, { Suspense, useState } from 'react';
 import Label from '@/components/Forms/Label';
 import TextInput from '@/components/Forms/TextInput';
-import { NewSettingPage } from '@/db/models';
+import { NewRulePage } from '@/db/models';
 import useFormHelper from '@/hooks/useFormHelper';
 import Button from '@/components/Button';
 import { faSave } from '@fortawesome/free-solid-svg-icons';
 import dynamic from 'next/dynamic';
-import { saveSettingPage } from '@/app/actions';
+import { saveRulePage } from '@/app/actions';
 import { useRouter } from 'next/navigation';
 
 const MarkdownEditor = dynamic(() => import('@/components/Markdown/MarkdownEditor'), { ssr: false });
 
 interface Props {
-  settingPage: NewSettingPage;
+  rulePage: NewRulePage;
 }
 
-const SettingPageForm = ({ settingPage }: Props) => {
-  const [workingSettingPage, setWorkingSettingPage] = useState<NewSettingPage>(settingPage);
+const RulePageForm = ({ rulePage }: Props) => {
+  const [workingRulePage, setWorkingRulePage] = useState<NewRulePage>(rulePage);
   const { createSlug } = useFormHelper();
   const router = useRouter();
 
   function handleChangeWorkingValues({ title, text, slug }: { title?: string, text?: string, slug?: string }) {
-    setWorkingSettingPage((prevState) => {
+    setWorkingRulePage((prevState) => {
       return {
         ...prevState,
         title: title ?? prevState.title,
@@ -34,8 +34,8 @@ const SettingPageForm = ({ settingPage }: Props) => {
   }
 
   async function handleSave() {
-    await saveSettingPage(workingSettingPage);
-    router.push('/admin/setting/custom');
+    await saveRulePage(workingRulePage);
+    router.push('/admin/rules/custom');
   }
 
   return (
@@ -43,14 +43,14 @@ const SettingPageForm = ({ settingPage }: Props) => {
       <div className="flex flex-col">
         <Label>Title</Label>
         <TextInput
-          value={workingSettingPage.title}
+          value={workingRulePage.title}
           onChange={(e) => handleChangeWorkingValues({ title: e.target.value })}
         />
       </div>
       <div className="flex flex-col">
         <Label>Slug</Label>
         <TextInput
-          value={workingSettingPage.slug}
+          value={workingRulePage.slug}
           onChange={(e) => handleChangeWorkingValues({ slug: e.target.value })}
         />
       </div>
@@ -58,7 +58,7 @@ const SettingPageForm = ({ settingPage }: Props) => {
         <Label>Text</Label>
         <Suspense fallback={'test'}>
           <MarkdownEditor
-            markdown={workingSettingPage.text ?? ''}
+            markdown={workingRulePage.text ?? ''}
             onChange={(markdown) => handleChangeWorkingValues({ text: markdown })}
           />
         </Suspense>
@@ -70,4 +70,4 @@ const SettingPageForm = ({ settingPage }: Props) => {
   );
 };
 
-export default SettingPageForm;
+export default RulePageForm;

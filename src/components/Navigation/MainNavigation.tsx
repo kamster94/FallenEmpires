@@ -73,7 +73,7 @@ function MainNavigation({ className }: Props) {
   const databaseRuleLinks: NavigationIemProps[] = rulePages.map((rulePage) => {
     return {
       label: rulePage.title,
-      route: `/rule/${rulePage.slug}`,
+      route: `/rules/${rulePage.slug}`,
     };
   });
 

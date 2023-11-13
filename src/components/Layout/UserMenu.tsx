@@ -37,7 +37,7 @@ const UserMenu = () => {
                   active ? 'bg-primary text-white' : 'text-gray-900'
                 } group flex w-full items-center px-2 py-2 text-sm`}
               >
-                <a href="/admin" className="flex items-center w-full">Admin Panel</a>
+                <a href="/admin" className="flex items-center w-full h-full">Admin Panel</a>
               </button>
             )}
           </Menu.Item>

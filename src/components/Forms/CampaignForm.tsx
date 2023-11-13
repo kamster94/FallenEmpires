@@ -3,54 +3,54 @@
 import React, { Suspense, useState } from 'react';
 import Label from '@/components/Forms/Label';
 import TextInput from '@/components/Forms/TextInput';
-import { NewSettingPage } from '@/db/models';
+import { NewCampaign } from '@/db/models';
 import useFormHelper from '@/hooks/useFormHelper';
 import Button from '@/components/Button';
 import { faSave } from '@fortawesome/free-solid-svg-icons';
 import dynamic from 'next/dynamic';
-import { saveSettingPage } from '@/app/actions';
+import { saveCampaign } from '@/app/actions';
 import { useRouter } from 'next/navigation';
 
 const MarkdownEditor = dynamic(() => import('@/components/Markdown/MarkdownEditor'), { ssr: false });
 
 interface Props {
-  settingPage: NewSettingPage;
+  campaign: NewCampaign;
 }
 
-const SettingPageForm = ({ settingPage }: Props) => {
-  const [workingSettingPage, setWorkingSettingPage] = useState<NewSettingPage>(settingPage);
+const CampaignForm = ({ campaign }: Props) => {
+  const [workingCampaign, setWorkingCampaign] = useState<NewCampaign>(campaign);
   const { createSlug } = useFormHelper();
   const router = useRouter();
 
-  function handleChangeWorkingValues({ title, text, slug }: { title?: string, text?: string, slug?: string }) {
-    setWorkingSettingPage((prevState) => {
+  function handleChangeWorkingValues({ name, text, slug }: { name?: string, text?: string, slug?: string }) {
+    setWorkingCampaign((prevState) => {
       return {
         ...prevState,
-        title: title ?? prevState.title,
+        name: name ?? prevState.name,
         text: text ?? prevState.text,
-        slug: slug ?? createSlug(title) ?? prevState.slug,
+        slug: slug ?? createSlug(name) ?? prevState.slug,
       };
     });
   }
 
   async function handleSave() {
-    await saveSettingPage(workingSettingPage);
-    router.push('/admin/setting/custom');
+    await saveCampaign(workingCampaign);
+    router.push('/admin/campaigns');
   }
 
   return (
     <form className="flex flex-col space-y-3">
       <div className="flex flex-col">
-        <Label>Title</Label>
+        <Label>Name</Label>
         <TextInput
-          value={workingSettingPage.title}
-          onChange={(e) => handleChangeWorkingValues({ title: e.target.value })}
+          value={workingCampaign.name}
+          onChange={(e) => handleChangeWorkingValues({ name: e.target.value })}
         />
       </div>
       <div className="flex flex-col">
         <Label>Slug</Label>
         <TextInput
-          value={workingSettingPage.slug}
+          value={workingCampaign.slug}
           onChange={(e) => handleChangeWorkingValues({ slug: e.target.value })}
         />
       </div>
@@ -58,7 +58,7 @@ const SettingPageForm = ({ settingPage }: Props) => {
         <Label>Text</Label>
         <Suspense fallback={'test'}>
           <MarkdownEditor
-            markdown={workingSettingPage.text ?? ''}
+            markdown={workingCampaign.text ?? ''}
             onChange={(markdown) => handleChangeWorkingValues({ text: markdown })}
           />
         </Suspense>
@@ -70,4 +70,4 @@ const SettingPageForm = ({ settingPage }: Props) => {
   );
 };
 
-export default SettingPageForm;
+export default CampaignForm;

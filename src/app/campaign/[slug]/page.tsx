@@ -1,10 +1,10 @@
+import MarkdownContent from '@/components/Markdown/MarkdownContent';
 import Page from '@/components/Page';
 import PageHeader from '@/components/PageHeader';
-import useDatabase from '@/hooks/useDatabase';
 import { notFound } from 'next/navigation';
+import { getCampaign } from '@/app/actions';
 
 export default async function CampaignPage({ params }: { params: { slug: string } }) {
-  const { getCampaign } = useDatabase();
   const campaign = await getCampaign(params.slug);
   if (!campaign) {
     return notFound();
@@ -13,7 +13,7 @@ export default async function CampaignPage({ params }: { params: { slug: string 
   return (
     <Page>
       <PageHeader title={campaign.name} />
-      {campaign.text}
+      <MarkdownContent>{campaign.text}</MarkdownContent>
     </Page>
   );
 }
