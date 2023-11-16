@@ -8,8 +8,12 @@ export default function AdminCampaigns() {
   return (
     <Section>
       <SectionHeader>Campaigns</SectionHeader>
-      <div className="space-y-2">
-        <ButtonLink label="New Campaign" icon={faPlus} route="/admin/campaigns/create" />
+      <div className='space-y-2'>
+        <ButtonLink
+          label='New Campaign'
+          icon={faPlus}
+          route='/admin/campaigns/create'
+        />
         <CampaignsAdminTable />
       </div>
     </Section>

@@ -5,9 +5,7 @@ export default function AdminBlog() {
   return (
     <Section>
       <SectionHeader>Blog Posts</SectionHeader>
-      <div>
-        Blog Posts Here
-      </div>
+      <div>Blog Posts Here</div>
     </Section>
   );
 }

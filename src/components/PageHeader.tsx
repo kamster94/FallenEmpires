@@ -8,9 +8,7 @@ interface Props {
 const PageHeader = ({ title }: Props) => {
   return (
     <BlockWithDecoration>
-      <h1 className="text-5xl text-primary font-bold text-center">
-        {title}
-      </h1>
+      <h1 className='text-center text-5xl font-bold text-primary'>{title}</h1>
     </BlockWithDecoration>
   );
 };

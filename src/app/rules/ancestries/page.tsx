@@ -4,7 +4,7 @@ import PageHeader from '@/components/PageHeader';
 export default function Ancestries() {
   return (
     <Page>
-      <PageHeader title="Ancestries"/>
+      <PageHeader title='Ancestries' />
     </Page>
   );
 }

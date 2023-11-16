@@ -9,7 +9,7 @@ interface Props {
 
 const MarkdownContent = ({ children }: Props) => {
   return (
-    <Section className="md:px-12 markdown">
+    <Section className='markdown md:px-12'>
       <Markdown>{children}</Markdown>
     </Section>
   );

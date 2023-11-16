@@ -5,9 +5,7 @@ export default function AdminGeneralSettings() {
   return (
     <Section>
       <SectionHeader>General Settings</SectionHeader>
-      <div>
-        General Settings Here
-      </div>
+      <div>General Settings Here</div>
     </Section>
   );
 }

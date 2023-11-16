@@ -1,7 +1,13 @@
 'use server';
 
 import {
-  Campaign, db, NewCampaign, NewRulePage, NewSettingPage, RulePage, SettingPage,
+  Campaign,
+  db,
+  NewCampaign,
+  NewRulePage,
+  NewSettingPage,
+  RulePage,
+  SettingPage,
 } from '@/db/models';
 import { CampaignsTable, RulePagesTable, SettingPagesTable } from '@/db/schema';
 import { eq } from 'drizzle-orm';
@@ -10,7 +16,9 @@ export async function getAllSettingPages(): Promise<SettingPage[]> {
   return db.query.SettingPagesTable.findMany();
 }
 
-export async function getSettingPage(slug: string): Promise<SettingPage | undefined> {
+export async function getSettingPage(
+  slug: string
+): Promise<SettingPage | undefined> {
   return db.query.SettingPagesTable.findFirst({
     where: eq(SettingPagesTable.slug, slug),
   });
@@ -20,7 +28,11 @@ export async function saveSettingPage(settingPage: NewSettingPage) {
   if (settingPage.id) {
     await db
       .update(SettingPagesTable)
-      .set({ title: settingPage.title, text: settingPage.text, slug: settingPage.slug })
+      .set({
+        title: settingPage.title,
+        text: settingPage.text,
+        slug: settingPage.slug,
+      })
       .where(eq(SettingPagesTable.id, settingPage.id));
   } else {
     await db.insert(SettingPagesTable).values(settingPage);

@@ -11,7 +11,10 @@ import dynamic from 'next/dynamic';
 import { saveCampaign } from '@/app/actions';
 import { useRouter } from 'next/navigation';
 
-const MarkdownEditor = dynamic(() => import('@/components/Markdown/MarkdownEditor'), { ssr: false });
+const MarkdownEditor = dynamic(
+  () => import('@/components/Markdown/MarkdownEditor'),
+  { ssr: false }
+);
 
 interface Props {
   campaign: NewCampaign;
@@ -22,7 +25,15 @@ const CampaignForm = ({ campaign }: Props) => {
   const { createSlug } = useFormHelper();
   const router = useRouter();
 
-  function handleChangeWorkingValues({ name, text, slug }: { name?: string, text?: string, slug?: string }) {
+  function handleChangeWorkingValues({
+    name,
+    text,
+    slug,
+  }: {
+    name?: string;
+    text?: string;
+    slug?: string;
+  }) {
     setWorkingCampaign((prevState) => {
       return {
         ...prevState,
@@ -39,32 +50,34 @@ const CampaignForm = ({ campaign }: Props) => {
   }
 
   return (
-    <form className="flex flex-col space-y-3">
-      <div className="flex flex-col">
+    <form className='flex flex-col space-y-3'>
+      <div className='flex flex-col'>
         <Label>Name</Label>
         <TextInput
           value={workingCampaign.name}
           onChange={(e) => handleChangeWorkingValues({ name: e.target.value })}
         />
       </div>
-      <div className="flex flex-col">
+      <div className='flex flex-col'>
         <Label>Slug</Label>
         <TextInput
           value={workingCampaign.slug}
           onChange={(e) => handleChangeWorkingValues({ slug: e.target.value })}
         />
       </div>
-      <div className="flex flex-col">
+      <div className='flex flex-col'>
         <Label>Text</Label>
         <Suspense fallback={'test'}>
           <MarkdownEditor
             markdown={workingCampaign.text ?? ''}
-            onChange={(markdown) => handleChangeWorkingValues({ text: markdown })}
+            onChange={(markdown) =>
+              handleChangeWorkingValues({ text: markdown })
+            }
           />
         </Suspense>
       </div>
-      <div className="flex justify-end">
-        <Button label="Save" icon={faSave} onClick={handleSave} />
+      <div className='flex justify-end'>
+        <Button label='Save' icon={faSave} onClick={handleSave} />
       </div>
     </form>
   );

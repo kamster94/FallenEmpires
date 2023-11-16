@@ -24,17 +24,29 @@ const NavigationCategoryMenu = ({ navigationCategory, className }: Props) => {
       <Link
         href={navigationCategory.route}
         target={navigationCategory.target}
-        className={classnames('inline-flex w-full space-x-1 items-center', className)}
+        className={classnames(
+          'inline-flex w-full items-center space-x-1',
+          className
+        )}
       >
-        <FontAwesomeIcon icon={navigationCategory?.icon} width={18} height={18}/>
+        <FontAwesomeIcon
+          icon={navigationCategory?.icon}
+          width={18}
+          height={18}
+        />
         <span>{navigationCategory?.label}</span>
       </Link>
     );
   }
 
   return (
-    <div className={classnames('inline-flex w-full space-x-1 items-center', className)}>
-      <FontAwesomeIcon icon={navigationCategory?.icon} width={18} height={18}/>
+    <div
+      className={classnames(
+        'inline-flex w-full items-center space-x-1',
+        className
+      )}
+    >
+      <FontAwesomeIcon icon={navigationCategory?.icon} width={18} height={18} />
       <span>{navigationCategory?.label}</span>
     </div>
   );

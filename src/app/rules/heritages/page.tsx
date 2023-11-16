@@ -4,7 +4,7 @@ import PageHeader from '@/components/PageHeader';
 export default function Heritages() {
   return (
     <Page>
-      <PageHeader title="Heritages"/>
+      <PageHeader title='Heritages' />
     </Page>
   );
 }

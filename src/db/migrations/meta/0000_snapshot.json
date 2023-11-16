@@ -40,9 +40,7 @@
         "Ancestries_Slug_unique": {
           "name": "Ancestries_Slug_unique",
           "nullsNotDistinct": false,
-          "columns": [
-            "Slug"
-          ]
+          "columns": ["Slug"]
         }
       }
     },
@@ -69,12 +67,8 @@
           "name": "AncestriesTags_AncestryId_Ancestries_Id_fk",
           "tableFrom": "AncestriesTags",
           "tableTo": "Ancestries",
-          "columnsFrom": [
-            "AncestryId"
-          ],
-          "columnsTo": [
-            "Id"
-          ],
+          "columnsFrom": ["AncestryId"],
+          "columnsTo": ["Id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         },
@@ -82,12 +76,8 @@
           "name": "AncestriesTags_TagId_Tags_Id_fk",
           "tableFrom": "AncestriesTags",
           "tableTo": "Tags",
-          "columnsFrom": [
-            "TagId"
-          ],
-          "columnsTo": [
-            "Id"
-          ],
+          "columnsFrom": ["TagId"],
+          "columnsTo": ["Id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
@@ -95,10 +85,7 @@
       "compositePrimaryKeys": {
         "AncestriesTags_AncestryId_TagId": {
           "name": "AncestriesTags_AncestryId_TagId",
-          "columns": [
-            "AncestryId",
-            "TagId"
-          ]
+          "columns": ["AncestryId", "TagId"]
         }
       },
       "uniqueConstraints": {}
@@ -135,9 +122,7 @@
       "indexes": {
         "Campaigns_unique_idx": {
           "name": "Campaigns_unique_idx",
-          "columns": [
-            "Slug"
-          ],
+          "columns": ["Slug"],
           "isUnique": true
         }
       },
@@ -181,9 +166,7 @@
         "Feats_Slug_unique": {
           "name": "Feats_Slug_unique",
           "nullsNotDistinct": false,
-          "columns": [
-            "Slug"
-          ]
+          "columns": ["Slug"]
         }
       }
     },
@@ -210,12 +193,8 @@
           "name": "FeatsTags_FeatId_Feats_Id_fk",
           "tableFrom": "FeatsTags",
           "tableTo": "Feats",
-          "columnsFrom": [
-            "FeatId"
-          ],
-          "columnsTo": [
-            "Id"
-          ],
+          "columnsFrom": ["FeatId"],
+          "columnsTo": ["Id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         },
@@ -223,12 +202,8 @@
           "name": "FeatsTags_TagId_Tags_Id_fk",
           "tableFrom": "FeatsTags",
           "tableTo": "Tags",
-          "columnsFrom": [
-            "TagId"
-          ],
-          "columnsTo": [
-            "Id"
-          ],
+          "columnsFrom": ["TagId"],
+          "columnsTo": ["Id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
@@ -236,10 +211,7 @@
       "compositePrimaryKeys": {
         "FeatsTags_FeatId_TagId": {
           "name": "FeatsTags_FeatId_TagId",
-          "columns": [
-            "FeatId",
-            "TagId"
-          ]
+          "columns": ["FeatId", "TagId"]
         }
       },
       "uniqueConstraints": {}
@@ -280,9 +252,7 @@
         "Heritages_Slug_unique": {
           "name": "Heritages_Slug_unique",
           "nullsNotDistinct": false,
-          "columns": [
-            "Slug"
-          ]
+          "columns": ["Slug"]
         }
       }
     },
@@ -309,12 +279,8 @@
           "name": "HeritagesTags_HeritageId_Heritages_Id_fk",
           "tableFrom": "HeritagesTags",
           "tableTo": "Heritages",
-          "columnsFrom": [
-            "HeritageId"
-          ],
-          "columnsTo": [
-            "Id"
-          ],
+          "columnsFrom": ["HeritageId"],
+          "columnsTo": ["Id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         },
@@ -322,12 +288,8 @@
           "name": "HeritagesTags_TagId_Tags_Id_fk",
           "tableFrom": "HeritagesTags",
           "tableTo": "Tags",
-          "columnsFrom": [
-            "TagId"
-          ],
-          "columnsTo": [
-            "Id"
-          ],
+          "columnsFrom": ["TagId"],
+          "columnsTo": ["Id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
@@ -335,10 +297,7 @@
       "compositePrimaryKeys": {
         "HeritagesTags_HeritageId_TagId": {
           "name": "HeritagesTags_HeritageId_TagId",
-          "columns": [
-            "HeritageId",
-            "TagId"
-          ]
+          "columns": ["HeritageId", "TagId"]
         }
       },
       "uniqueConstraints": {}
@@ -392,9 +351,7 @@
         "Posts_Slug_unique": {
           "name": "Posts_Slug_unique",
           "nullsNotDistinct": false,
-          "columns": [
-            "Slug"
-          ]
+          "columns": ["Slug"]
         }
       }
     },
@@ -434,9 +391,7 @@
         "RulePages_Slug_unique": {
           "name": "RulePages_Slug_unique",
           "nullsNotDistinct": false,
-          "columns": [
-            "Slug"
-          ]
+          "columns": ["Slug"]
         }
       }
     },
@@ -476,9 +431,7 @@
         "SettingPages_Slug_unique": {
           "name": "SettingPages_Slug_unique",
           "nullsNotDistinct": false,
-          "columns": [
-            "Slug"
-          ]
+          "columns": ["Slug"]
         }
       }
     },

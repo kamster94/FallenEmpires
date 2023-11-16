@@ -2,7 +2,11 @@
 
 import React from 'react';
 import {
-  faBook, faCog, faFlag, faGlobe, faNewspaper,
+  faBook,
+  faCog,
+  faFlag,
+  faGlobe,
+  faNewspaper,
 } from '@fortawesome/free-solid-svg-icons';
 import NavigationCategoryDisclosure from '@/components/Navigation/NavigationCategoryDisclosure';
 import { NavigationIemProps } from '@/components/Navigation/NavigationItem';
@@ -51,12 +55,42 @@ const defaultRulesLinks: NavigationIemProps[] = [
 
 const AdminNavigation = () => {
   return (
-    <div className="mx-auto w-full max-w-md">
-      <NavigationCategoryDisclosure navigationCategory={{ label: 'General Settings', icon: faCog, route: '/admin/general' }} />
-      <NavigationCategoryDisclosure navigationCategory={{ label: 'Setting', icon: faGlobe, navigationItems: defaultSettingLinks }} />
-      <NavigationCategoryDisclosure navigationCategory={{ label: 'Rules', icon: faBook, navigationItems: defaultRulesLinks }} />
-      <NavigationCategoryDisclosure navigationCategory={{ label: 'Campaigns', icon: faFlag, route: '/admin/campaigns' }} />
-      <NavigationCategoryDisclosure navigationCategory={{ label: 'Blog', icon: faNewspaper, route: '/admin/blog' }} />
+    <div className='mx-auto w-full max-w-md'>
+      <NavigationCategoryDisclosure
+        navigationCategory={{
+          label: 'General Settings',
+          icon: faCog,
+          route: '/admin/general',
+        }}
+      />
+      <NavigationCategoryDisclosure
+        navigationCategory={{
+          label: 'Setting',
+          icon: faGlobe,
+          navigationItems: defaultSettingLinks,
+        }}
+      />
+      <NavigationCategoryDisclosure
+        navigationCategory={{
+          label: 'Rules',
+          icon: faBook,
+          navigationItems: defaultRulesLinks,
+        }}
+      />
+      <NavigationCategoryDisclosure
+        navigationCategory={{
+          label: 'Campaigns',
+          icon: faFlag,
+          route: '/admin/campaigns',
+        }}
+      />
+      <NavigationCategoryDisclosure
+        navigationCategory={{
+          label: 'Blog',
+          icon: faNewspaper,
+          route: '/admin/blog',
+        }}
+      />
     </div>
   );
 };

@@ -4,7 +4,7 @@ import PageHeader from '@/components/PageHeader';
 export default function Languages() {
   return (
     <Page>
-      <PageHeader title="Languages"/>
+      <PageHeader title='Languages' />
     </Page>
   );
 }

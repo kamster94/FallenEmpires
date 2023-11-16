@@ -6,7 +6,11 @@ import ButtonLink from '@/components/ButtonLink';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { getSettingPage } from '@/app/actions';
 
-export default async function AdminGeneralSettingsEdit({ params }: { params: { slug: string } }) {
+export default async function AdminGeneralSettingsEdit({
+  params,
+}: {
+  params: { slug: string };
+}) {
   const settingPage = await getSettingPage(params.slug);
   if (!settingPage) {
     return notFound();
@@ -15,9 +19,11 @@ export default async function AdminGeneralSettingsEdit({ params }: { params: { s
   return (
     <Section>
       <SectionHeader>Custom Setting Pages</SectionHeader>
-      <div className="flex space-x-2 items-center mb-4">
+      <div className='mb-4 flex items-center space-x-2'>
         <ButtonLink route='/admin/setting/custom' icon={faArrowLeft} />
-        <h4 className="text-primary font-bold text-xl">Editing: {settingPage.title}</h4>
+        <h4 className='text-xl font-bold text-primary'>
+          Editing: {settingPage.title}
+        </h4>
       </div>
 
       <div>

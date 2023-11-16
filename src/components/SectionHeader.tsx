@@ -8,7 +8,11 @@ interface Props {
 
 const SectionHeader = ({ children, className }: Props) => {
   return (
-    <h2 className={classnames('text-primary font-bold text-2xl mb-4', className)}>{children}</h2>
+    <h2
+      className={classnames('mb-4 text-2xl font-bold text-primary', className)}
+    >
+      {children}
+    </h2>
   );
 };
 

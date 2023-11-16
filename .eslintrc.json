@@ -1,9 +1,12 @@
 {
-  "extends": ["next/core-web-vitals", "airbnb-base"],
+  "extends": ["next/core-web-vitals", "prettier"],
   "rules": {
-    "no-unused-vars": [2, {
-      "args": "none"
-    }],
+    "no-unused-vars": [
+      2,
+      {
+        "args": "none"
+      }
+    ],
     "import/prefer-default-export": "off",
     "import/extensions": "off",
     "max-len": "off",
@@ -11,9 +14,13 @@
     "import/no-extraneous-dependencies": "off",
     "quotes": ["error", "single"],
     "react/jsx-indent": ["error", 2],
-    "indent": ["error", 2, {
-      "SwitchCase": 1,
-      "ignoreComments": false
-    }]
+    "indent": [
+      "error",
+      2,
+      {
+        "SwitchCase": 1,
+        "ignoreComments": false
+      }
+    ]
   }
 }

@@ -3,7 +3,7 @@
 </p>
 <h1 align="center">Age of Fallen Empires</h1>
 
-This code is full stack app for the __Age of Fallen Empires__, a homebrew setting for [Pathfinder 2e](https://paizo.com/pathfinder). The app is written in Next.js, using TypeScript, and deployed to Vercel.
+This code is full stack app for the **Age of Fallen Empires**, a homebrew setting for [Pathfinder 2e](https://paizo.com/pathfinder). The app is written in Next.js, using TypeScript, and deployed to Vercel.
 
 ### Tech stack
 

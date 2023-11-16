@@ -6,7 +6,11 @@ import ButtonLink from '@/components/ButtonLink';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { getRulePage } from '@/app/actions';
 
-export default async function AdminGeneralRulesEdit({ params }: { params: { slug: string } }) {
+export default async function AdminGeneralRulesEdit({
+  params,
+}: {
+  params: { slug: string };
+}) {
   const rulePage = await getRulePage(params.slug);
   if (!rulePage) {
     return notFound();
@@ -15,9 +19,11 @@ export default async function AdminGeneralRulesEdit({ params }: { params: { slug
   return (
     <Section>
       <SectionHeader>Custom Rule Pages</SectionHeader>
-      <div className="flex space-x-2 items-center mb-4">
+      <div className='mb-4 flex items-center space-x-2'>
         <ButtonLink route='/admin/rules/custom' icon={faArrowLeft} />
-        <h4 className="text-primary font-bold text-xl">Editing: {rulePage.title}</h4>
+        <h4 className='text-xl font-bold text-primary'>
+          Editing: {rulePage.title}
+        </h4>
       </div>
 
       <div>

@@ -4,7 +4,11 @@ import { notFound } from 'next/navigation';
 import MarkdownContent from '@/components/Markdown/MarkdownContent';
 import { getSettingPage } from '@/app/actions';
 
-export default async function CustomSettingPage({ params }: { params: { slug: string } }) {
+export default async function CustomSettingPage({
+  params,
+}: {
+  params: { slug: string };
+}) {
   const settingPage = await getSettingPage(params.slug);
   if (!settingPage) {
     return notFound();

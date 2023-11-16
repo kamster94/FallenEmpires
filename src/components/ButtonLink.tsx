@@ -10,9 +10,7 @@ interface Props {
   route: string;
 }
 
-const ButtonLink = ({
-  label, className, icon, route,
-}: Props) => {
+const ButtonLink = ({ label, className, icon, route }: Props) => {
   return (
     <Link href={route}>
       <Button label={label} className={className} icon={icon} />

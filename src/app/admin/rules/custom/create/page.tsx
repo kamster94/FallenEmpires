@@ -8,9 +8,9 @@ export default function AdminCreateCustomRulePage() {
   return (
     <Section>
       <SectionHeader>Custom Rule Pages</SectionHeader>
-      <div className="flex space-x-2 items-center mb-4">
+      <div className='mb-4 flex items-center space-x-2'>
         <ButtonLink route='/admin/rules/custom' icon={faArrowLeft} />
-        <h4 className="text-primary font-bold text-xl">Create New</h4>
+        <h4 className='text-xl font-bold text-primary'>Create New</h4>
       </div>
       <div>
         <RulePageForm rulePage={{ title: '', text: '', slug: '' }} />

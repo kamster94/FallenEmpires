@@ -1,11 +1,11 @@
-version: "3.8"
+version: '3.8'
 services:
   postgres:
     image: postgres
     container_name: postgres
     restart: always
     ports:
-      - "5432:5432"
+      - '5432:5432'
     env_file:
       - ../../.env
     volumes:
@@ -15,7 +15,7 @@ services:
     container_name: pgadmin
     restart: always
     ports:
-      - "8888:80"
+      - '8888:80'
     env_file:
       - ../../.env
     volumes:

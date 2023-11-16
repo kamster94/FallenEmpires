@@ -27,13 +27,16 @@ const RulePagesAdminTable = () => {
   const rows: Row[] = rulePages.map((rulePage) => {
     return {
       cells: [rulePage.title, rulePage.slug],
-      actions: <TableActions editRoute={`/admin/rules/custom/${rulePage.slug}`} deleteAction={() => handleDelete(rulePage.id)}/>,
+      actions: (
+        <TableActions
+          editRoute={`/admin/rules/custom/${rulePage.slug}`}
+          deleteAction={() => handleDelete(rulePage.id)}
+        />
+      ),
     };
   });
 
-  return (
-    <DataTable headers={headers} rows={rows} />
-  );
+  return <DataTable headers={headers} rows={rows} />;
 };
 
 export default RulePagesAdminTable;

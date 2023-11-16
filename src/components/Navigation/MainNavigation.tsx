@@ -2,12 +2,20 @@
 
 import React, { useEffect, useState } from 'react';
 import {
-  faBook, faDiceD20, faFlag, faGlobe, faNewspaper,
+  faBook,
+  faDiceD20,
+  faFlag,
+  faGlobe,
+  faNewspaper,
 } from '@fortawesome/free-solid-svg-icons';
 import NavigationCategoryMenu from '@/components/Navigation/NavigationCategoryMenu';
 import { NavigationIemProps } from '@/components/Navigation/NavigationItem';
 import { Campaign, RulePage, SettingPage } from '@/db/models';
-import { getAllCampaigns, getAllRulePages, getAllSettingPages } from '@/app/actions';
+import {
+  getAllCampaigns,
+  getAllRulePages,
+  getAllSettingPages,
+} from '@/app/actions';
 
 interface Props {
   className?: string;
@@ -63,12 +71,14 @@ function MainNavigation({ className }: Props) {
     });
   }, []);
 
-  const databaseSettingLinks: NavigationIemProps[] = settingPages.map((settingPage) => {
-    return {
-      label: settingPage.title,
-      route: `/setting/${settingPage.slug}`,
-    };
-  });
+  const databaseSettingLinks: NavigationIemProps[] = settingPages.map(
+    (settingPage) => {
+      return {
+        label: settingPage.title,
+        route: `/setting/${settingPage.slug}`,
+      };
+    }
+  );
 
   const databaseRuleLinks: NavigationIemProps[] = rulePages.map((rulePage) => {
     return {
@@ -77,30 +87,53 @@ function MainNavigation({ className }: Props) {
     };
   });
 
-  const databaseCampaignLinks: NavigationIemProps[] = campaigns.map((campaign) => {
-    return {
-      label: campaign.name,
-      route: `/campaign/${campaign.slug}`,
-    };
-  });
+  const databaseCampaignLinks: NavigationIemProps[] = campaigns.map(
+    (campaign) => {
+      return {
+        label: campaign.name,
+        route: `/campaign/${campaign.slug}`,
+      };
+    }
+  );
 
   return (
-    <div className={className} >
-      <NavigationCategoryMenu navigationCategory={{
-        label: 'Setting', icon: faGlobe, navigationItems: [...databaseSettingLinks, ...defaultSettingLinks],
-      }} />
-      <NavigationCategoryMenu navigationCategory={{
-        label: 'Rules', icon: faBook, navigationItems: [...databaseRuleLinks, ...defaultRulesLinks],
-      }} />
-      <NavigationCategoryMenu navigationCategory={{
-        label: 'Campaigns', icon: faFlag, navigationItems: databaseCampaignLinks,
-      }} />
-      <NavigationCategoryMenu navigationCategory={{
-        label: 'Blog', icon: faNewspaper, route: '/blog',
-      }} />
-      <NavigationCategoryMenu navigationCategory={{
-        label: 'Foundry VTT', icon: faDiceD20, route: 'http://foundry.fallenempires.eu/join', target: '_blank',
-      }} />
+    <div className={className}>
+      <NavigationCategoryMenu
+        navigationCategory={{
+          label: 'Setting',
+          icon: faGlobe,
+          navigationItems: [...databaseSettingLinks, ...defaultSettingLinks],
+        }}
+      />
+      <NavigationCategoryMenu
+        navigationCategory={{
+          label: 'Rules',
+          icon: faBook,
+          navigationItems: [...databaseRuleLinks, ...defaultRulesLinks],
+        }}
+      />
+      <NavigationCategoryMenu
+        navigationCategory={{
+          label: 'Campaigns',
+          icon: faFlag,
+          navigationItems: databaseCampaignLinks,
+        }}
+      />
+      <NavigationCategoryMenu
+        navigationCategory={{
+          label: 'Blog',
+          icon: faNewspaper,
+          route: '/blog',
+        }}
+      />
+      <NavigationCategoryMenu
+        navigationCategory={{
+          label: 'Foundry VTT',
+          icon: faDiceD20,
+          route: 'http://foundry.fallenempires.eu/join',
+          target: '_blank',
+        }}
+      />
     </div>
   );
 }

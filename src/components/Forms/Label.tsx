@@ -8,7 +8,9 @@ interface Props {
 
 const Label = ({ children, className }: Props) => {
   return (
-    <label className={classnames('text-sm text-gray-600', className)}>{children}</label>
+    <label className={classnames('text-sm text-gray-600', className)}>
+      {children}
+    </label>
   );
 };
 

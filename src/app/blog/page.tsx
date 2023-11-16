@@ -4,7 +4,7 @@ import PageHeader from '@/components/PageHeader';
 export default function Blog() {
   return (
     <Page>
-      <PageHeader title="Blog"/>
+      <PageHeader title='Blog' />
     </Page>
   );
 }

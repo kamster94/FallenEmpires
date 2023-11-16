@@ -27,13 +27,16 @@ const SettingPagesAdminTable = () => {
   const rows: Row[] = settingPages.map((settingPage) => {
     return {
       cells: [settingPage.title, settingPage.slug],
-      actions: <TableActions editRoute={`/admin/setting/custom/${settingPage.slug}`} deleteAction={() => handleDelete(settingPage.id)}/>,
+      actions: (
+        <TableActions
+          editRoute={`/admin/setting/custom/${settingPage.slug}`}
+          deleteAction={() => handleDelete(settingPage.id)}
+        />
+      ),
     };
   });
 
-  return (
-    <DataTable headers={headers} rows={rows} />
-  );
+  return <DataTable headers={headers} rows={rows} />;
 };
 
 export default SettingPagesAdminTable;

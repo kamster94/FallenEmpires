@@ -2,7 +2,11 @@
 
 import React from 'react';
 import ButtonLink from '@/components/ButtonLink';
-import { faMagnifyingGlass, faPencil, faTrash } from '@fortawesome/free-solid-svg-icons';
+import {
+  faMagnifyingGlass,
+  faPencil,
+  faTrash,
+} from '@fortawesome/free-solid-svg-icons';
 import Button from '@/components/Button';
 
 interface Props {
@@ -19,13 +23,11 @@ const TableActions = ({ viewRoute, editRoute, deleteAction }: Props) => {
   }
 
   return (
-    <div className="flex space-x-2">
+    <div className='flex space-x-2'>
       {viewRoute && (
         <ButtonLink label='' route={viewRoute} icon={faMagnifyingGlass} />
       )}
-      {editRoute && (
-        <ButtonLink label='' route={editRoute} icon={faPencil} />
-      )}
+      {editRoute && <ButtonLink label='' route={editRoute} icon={faPencil} />}
       {deleteAction && (
         <Button label='' onClick={handleDelete} icon={faTrash} />
       )}

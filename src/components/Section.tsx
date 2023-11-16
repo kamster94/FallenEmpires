@@ -8,7 +8,7 @@ interface Props {
 
 const Section = ({ children, className }: Props) => {
   return (
-    <div className={classnames('flex flex-col w-full', className)}>
+    <div className={classnames('flex w-full flex-col', className)}>
       {children}
     </div>
   );

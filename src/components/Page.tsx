@@ -7,7 +7,10 @@ interface Props {
 
 const Page = ({ children }: Props) => {
   return (
-    <div className="flex flex-col flex-wrap items-center container mx-auto px-1 my-8 p-8 border-2 border-solid border-primary py-6 md:flex-no-wrap md:px-1 justify-center space-y-8" style={{ backgroundImage: `url(${paper.src})` }}>
+    <div
+      className='md:flex-no-wrap container mx-auto my-8 flex flex-col flex-wrap items-center justify-center space-y-8 border-2 border-solid border-primary p-8 px-1 py-6 md:px-1'
+      style={{ backgroundImage: `url(${paper.src})` }}
+    >
       {children}
     </div>
   );

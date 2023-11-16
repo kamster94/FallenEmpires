@@ -19,37 +19,47 @@ import {
 import React, { FC } from 'react';
 
 interface EditorProps {
-  markdown: string
-  editorRef?: React.MutableRefObject<MDXEditorMethods | null>
+  markdown: string;
+  editorRef?: React.MutableRefObject<MDXEditorMethods | null>;
   onChange?: (markdown: string) => void;
 }
 
 const MarkdownEditor: FC<EditorProps> = ({ markdown, editorRef, ...props }) => {
-  return <MDXEditor
-    contentEditableClassName="markdown bg-secondary"
-    className="markdown-editor border-2 border-primary bg-primary"
-    onChange={props.onChange}
-    ref={editorRef}
-    markdown={markdown}
-    plugins={[
-      headingsPlugin(),
-      listsPlugin(),
-      quotePlugin(),
-      thematicBreakPlugin(),
-      markdownShortcutPlugin(),
-      imagePlugin({
-        imageUploadHandler: () => {
-          return Promise.resolve('https://picsum.photos/200/300');
-        },
-        imageAutocompleteSuggestions: [
-          'https://picsum.photos/200/300',
-          'https://picsum.photos/200',
-        ],
-      }),
-      toolbarPlugin({
-        toolbarContents: () => (<> <UndoRedo /><BoldItalicUnderlineToggles /><InsertImage /></>),
-      }),
-    ]} />;
+  return (
+    <MDXEditor
+      contentEditableClassName='markdown bg-secondary'
+      className='markdown-editor border-2 border-primary bg-primary'
+      onChange={props.onChange}
+      ref={editorRef}
+      markdown={markdown}
+      plugins={[
+        headingsPlugin(),
+        listsPlugin(),
+        quotePlugin(),
+        thematicBreakPlugin(),
+        markdownShortcutPlugin(),
+        imagePlugin({
+          imageUploadHandler: () => {
+            return Promise.resolve('https://picsum.photos/200/300');
+          },
+          imageAutocompleteSuggestions: [
+            'https://picsum.photos/200/300',
+            'https://picsum.photos/200',
+          ],
+        }),
+        toolbarPlugin({
+          toolbarContents: () => (
+            <>
+              {' '}
+              <UndoRedo />
+              <BoldItalicUnderlineToggles />
+              <InsertImage />
+            </>
+          ),
+        }),
+      ]}
+    />
+  );
 };
 
 export default MarkdownEditor;

@@ -8,8 +8,12 @@ export default async function AdminCustomSettingPages() {
   return (
     <Section>
       <SectionHeader>Custom Setting Pages</SectionHeader>
-      <div className="space-y-2">
-        <ButtonLink label="New Page" icon={faPlus} route="/admin/setting/custom/create" />
+      <div className='space-y-2'>
+        <ButtonLink
+          label='New Page'
+          icon={faPlus}
+          route='/admin/setting/custom/create'
+        />
         <SettingPagesAdminTable />
       </div>
     </Section>

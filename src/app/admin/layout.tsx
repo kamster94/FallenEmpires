@@ -3,19 +3,17 @@ import Page from '@/components/Page';
 import PageHeader from '@/components/PageHeader';
 import AdminNavigation from '@/components/Navigation/AdminNavigation';
 
-export default function AdminLayout({
-  children,
-}: {
-  children: ReactNode
-}) {
+export default function AdminLayout({ children }: { children: ReactNode }) {
   return (
     <Page>
-      <PageHeader title="Admin Panel" />
-      <div className="flex flex-col md:flex-row container px-4 w-full md:px-12">
-        <div className="basis-1/5 md:max-w-[20%] flex flex-col">
+      <PageHeader title='Admin Panel' />
+      <div className='container flex w-full flex-col px-4 md:flex-row md:px-12'>
+        <div className='flex basis-1/5 flex-col md:max-w-[20%]'>
           <AdminNavigation />
         </div>
-        <div className="basis-4/5 md:max-w-[80%] flex flex-col px-2">{children}</div>
+        <div className='flex basis-4/5 flex-col px-2 md:max-w-[80%]'>
+          {children}
+        </div>
       </div>
     </Page>
   );

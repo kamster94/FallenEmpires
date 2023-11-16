@@ -27,13 +27,16 @@ const CampaignsAdminTable = () => {
   const rows: Row[] = campaigns.map((campaign) => {
     return {
       cells: [campaign.name, campaign.slug],
-      actions: <TableActions editRoute={`/admin/campaigns/${campaign.slug}`} deleteAction={() => handleDelete(campaign.id)}/>,
+      actions: (
+        <TableActions
+          editRoute={`/admin/campaigns/${campaign.slug}`}
+          deleteAction={() => handleDelete(campaign.id)}
+        />
+      ),
     };
   });
 
-  return (
-    <DataTable headers={headers} rows={rows} />
-  );
+  return <DataTable headers={headers} rows={rows} />;
 };
 
 export default CampaignsAdminTable;
