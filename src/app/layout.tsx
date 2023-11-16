@@ -6,6 +6,7 @@ import './globals.css';
 import Navbar from '@/components/Layout/Navbar';
 import Footer from '@/components/Layout/Footer';
 import MainNavigation from '@/components/Navigation/MainNavigation';
+import { Analytics } from '@vercel/analytics/react';
 import background from '../../public/background.jpg';
 
 const eczar = Eczar({
@@ -38,6 +39,7 @@ export default function RootLayout({
             </main>
             <Footer />
           </div>
+          <Analytics />
         </body>
       </UserProvider>
     </html>
