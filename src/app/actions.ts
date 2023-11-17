@@ -3,13 +3,20 @@
 import {
   Campaign,
   db,
+  GeneralSetting,
   NewCampaign,
+  NewGeneralSetting,
   NewRulePage,
   NewSettingPage,
   RulePage,
   SettingPage,
 } from '@/db/models';
-import { CampaignsTable, RulePagesTable, SettingPagesTable } from '@/db/schema';
+import {
+  CampaignsTable,
+  GeneralSettingsTable,
+  RulePagesTable,
+  SettingPagesTable,
+} from '@/db/schema';
 import { eq } from 'drizzle-orm';
 
 export async function getAllSettingPages(): Promise<SettingPage[]> {
@@ -91,4 +98,23 @@ export async function saveCampaign(campaign: NewCampaign) {
 
 export async function deleteCampaign(id: number) {
   await db.delete(CampaignsTable).where(eq(CampaignsTable.id, id));
+}
+
+export async function getGeneralSetting(
+  key: string
+): Promise<GeneralSetting | undefined> {
+  return db.query.GeneralSettingsTable.findFirst({
+    where: eq(GeneralSettingsTable.key, key),
+  });
+}
+
+export async function saveGeneralSetting(generalSetting: NewGeneralSetting) {
+  if (generalSetting.id) {
+    await db
+      .update(GeneralSettingsTable)
+      .set({ value: generalSetting.value })
+      .where(eq(GeneralSettingsTable.id, generalSetting.id));
+  } else {
+    await db.insert(GeneralSettingsTable).values(generalSetting);
+  }
 }

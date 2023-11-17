@@ -7,6 +7,10 @@ This code is full stack app for the **Age of Fallen Empires**, a homebrew settin
 
 ### Tech stack
 
+<p align="center">
+  <img src="https://skillicons.dev/icons?i=nextjs,react,ts,tailwind,postgres,vercel" />
+</p>
+
 - Next.js framework
 - Based on React
 - Using TypeScript

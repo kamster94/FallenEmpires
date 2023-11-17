@@ -38,6 +38,13 @@ export type NewFeat = InferInsertModel<typeof schema.FeatsTable>;
 
 export type FeatTag = InferSelectModel<typeof schema.FeatsTagsTable>;
 
+export type GeneralSetting = InferSelectModel<
+  typeof schema.GeneralSettingsTable
+>;
+export type NewGeneralSetting = InferInsertModel<
+  typeof schema.GeneralSettingsTable
+>;
+
 export const db = process.env.LOCAL_DATABASE_URL
   ? drizzlePostgres(postgres(process.env.LOCAL_DATABASE_URL), { schema })
   : drizzleVercel(sql, { schema });

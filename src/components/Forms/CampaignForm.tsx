@@ -67,7 +67,7 @@ const CampaignForm = ({ campaign }: Props) => {
       </div>
       <div className='flex flex-col'>
         <Label>Text</Label>
-        <Suspense fallback={'test'}>
+        <Suspense>
           <MarkdownEditor
             markdown={workingCampaign.text ?? ''}
             onChange={(markdown) =>

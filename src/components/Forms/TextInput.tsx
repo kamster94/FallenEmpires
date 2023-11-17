@@ -9,7 +9,7 @@ interface Props
   className?: string;
 }
 
-const TextInput = ({ children, className, ...props }: Props) => {
+const TextInput = ({ className, ...props }: Props) => {
   return (
     <input
       type='text'

@@ -176,3 +176,9 @@ export const FeatsToTagsRelations = relations(FeatsTagsTable, ({ one }) => ({
     references: [FeatsTable.id],
   }),
 }));
+
+export const GeneralSettingsTable = pgTable('GeneralSettings', {
+  id: serial('Id').primaryKey(),
+  key: varchar('Key', { length: 255 }).unique().notNull(),
+  value: text('Value'),
+});

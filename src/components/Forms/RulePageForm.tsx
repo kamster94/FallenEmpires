@@ -67,7 +67,7 @@ const RulePageForm = ({ rulePage }: Props) => {
       </div>
       <div className='flex flex-col'>
         <Label>Text</Label>
-        <Suspense fallback={'test'}>
+        <Suspense>
           <MarkdownEditor
             markdown={workingRulePage.text ?? ''}
             onChange={(markdown) =>

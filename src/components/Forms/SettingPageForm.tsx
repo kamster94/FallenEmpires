@@ -68,7 +68,7 @@ const SettingPageForm = ({ settingPage }: Props) => {
       </div>
       <div className='flex flex-col'>
         <Label>Text</Label>
-        <Suspense fallback={'test'}>
+        <Suspense>
           <MarkdownEditor
             markdown={workingSettingPage.text ?? ''}
             onChange={(markdown) =>
