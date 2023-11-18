@@ -8,14 +8,17 @@ import {
   NewGeneralSetting,
   NewRulePage,
   NewSettingPage,
+  NewTag,
   RulePage,
   SettingPage,
+  Tag,
 } from '@/db/models';
 import {
   CampaignsTable,
   GeneralSettingsTable,
   RulePagesTable,
   SettingPagesTable,
+  TagsTable,
 } from '@/db/schema';
 import { eq } from 'drizzle-orm';
 import { revalidatePath } from 'next/cache';
@@ -124,5 +127,32 @@ export async function saveGeneralSetting(generalSetting: NewGeneralSetting) {
   } else {
     await db.insert(GeneralSettingsTable).values(generalSetting);
   }
+  revalidatePath('/');
+}
+
+export async function getAllTags(): Promise<Tag[]> {
+  return db.query.TagsTable.findMany();
+}
+
+export async function getTag(id: number): Promise<Tag | undefined> {
+  return db.query.TagsTable.findFirst({
+    where: eq(TagsTable.id, id),
+  });
+}
+
+export async function saveTag(tag: NewTag) {
+  if (tag.id) {
+    await db
+      .update(TagsTable)
+      .set({ label: tag.label, link: tag.link })
+      .where(eq(TagsTable.id, tag.id));
+  } else {
+    await db.insert(TagsTable).values(tag);
+  }
+  revalidatePath('/');
+}
+
+export async function deleteTag(id: number) {
+  await db.delete(TagsTable).where(eq(TagsTable.id, id));
   revalidatePath('/');
 }

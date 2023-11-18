@@ -6,7 +6,7 @@ import ButtonLink from '@/components/ButtonLink';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { getCampaign } from '@/app/actions';
 
-export default async function AdminGeneralRulesEdit({
+export default async function AdminCampaignsEdit({
   params,
 }: {
   params: { slug: string };

@@ -7,6 +7,7 @@ import {
   faFlag,
   faGlobe,
   faNewspaper,
+  faTags,
 } from '@fortawesome/free-solid-svg-icons';
 import NavigationCategoryDisclosure from '@/components/Navigation/NavigationCategoryDisclosure';
 import { NavigationIemProps } from '@/components/Navigation/NavigationItem';
@@ -82,6 +83,13 @@ const AdminNavigation = () => {
           label: 'Campaigns',
           icon: faFlag,
           route: '/admin/campaigns',
+        }}
+      />
+      <NavigationCategoryDisclosure
+        navigationCategory={{
+          label: 'Tags',
+          icon: faTags,
+          route: '/admin/tags',
         }}
       />
       <NavigationCategoryDisclosure
