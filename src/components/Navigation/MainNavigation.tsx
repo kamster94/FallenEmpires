@@ -1,6 +1,4 @@
-'use client';
-
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import {
   faBook,
   faDiceD20,
@@ -10,7 +8,6 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import NavigationCategoryMenu from '@/components/Navigation/NavigationCategoryMenu';
 import { NavigationIemProps } from '@/components/Navigation/NavigationItem';
-import { Campaign, RulePage, SettingPage } from '@/db/models';
 import {
   getAllCampaigns,
   getAllRulePages,
@@ -55,46 +52,33 @@ const defaultRulesLinks: NavigationIemProps[] = [
   },
 ];
 
-function MainNavigation({ className }: Props) {
-  const [settingPages, setSettingPages] = useState<SettingPage[]>([]);
-  const [rulePages, setRulePages] = useState<RulePage[]>([]);
-  const [campaigns, setCampaigns] = useState<Campaign[]>([]);
-  useEffect(() => {
-    getAllSettingPages().then((loadedSettingPages) => {
-      setSettingPages(loadedSettingPages);
-    });
-    getAllRulePages().then((loadedRulePages) => {
-      setRulePages(loadedRulePages);
-    });
-    getAllCampaigns().then((loadedCampaigns) => {
-      setCampaigns(loadedCampaigns);
-    });
-  }, []);
-
-  const databaseSettingLinks: NavigationIemProps[] = settingPages.map(
-    (settingPage) => {
-      return {
-        label: settingPage.title,
-        route: `/setting/${settingPage.slug}`,
-      };
-    }
-  );
-
-  const databaseRuleLinks: NavigationIemProps[] = rulePages.map((rulePage) => {
+async function MainNavigation({ className }: Props) {
+  const databaseSettingLinks: NavigationIemProps[] = (
+    await getAllSettingPages()
+  ).map((settingPage) => {
     return {
-      label: rulePage.title,
-      route: `/rules/${rulePage.slug}`,
+      label: settingPage.title,
+      route: `/setting/${settingPage.slug}`,
     };
   });
 
-  const databaseCampaignLinks: NavigationIemProps[] = campaigns.map(
-    (campaign) => {
+  const databaseRuleLinks: NavigationIemProps[] = (await getAllRulePages()).map(
+    (rulePage) => {
       return {
-        label: campaign.name,
-        route: `/campaign/${campaign.slug}`,
+        label: rulePage.title,
+        route: `/rules/${rulePage.slug}`,
       };
     }
   );
+
+  const databaseCampaignLinks: NavigationIemProps[] = (
+    await getAllCampaigns()
+  ).map((campaign) => {
+    return {
+      label: campaign.name,
+      route: `/campaign/${campaign.slug}`,
+    };
+  });
 
   return (
     <div className={className}>

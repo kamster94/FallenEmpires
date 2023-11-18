@@ -45,10 +45,12 @@ export async function saveSettingPage(settingPage: NewSettingPage) {
   } else {
     await db.insert(SettingPagesTable).values(settingPage);
   }
+  revalidatePath('/');
 }
 
 export async function deleteSettingPage(id: number) {
   await db.delete(SettingPagesTable).where(eq(SettingPagesTable.id, id));
+  revalidatePath('/');
 }
 
 export async function getAllRulePages(): Promise<RulePage[]> {
@@ -70,10 +72,12 @@ export async function saveRulePage(rulePage: NewRulePage) {
   } else {
     await db.insert(RulePagesTable).values(rulePage);
   }
+  revalidatePath('/');
 }
 
 export async function deleteRulePage(id: number) {
   await db.delete(RulePagesTable).where(eq(RulePagesTable.id, id));
+  revalidatePath('/');
 }
 
 export async function getAllCampaigns(): Promise<Campaign[]> {
@@ -95,10 +99,12 @@ export async function saveCampaign(campaign: NewCampaign) {
   } else {
     await db.insert(CampaignsTable).values(campaign);
   }
+  revalidatePath('/');
 }
 
 export async function deleteCampaign(id: number) {
   await db.delete(CampaignsTable).where(eq(CampaignsTable.id, id));
+  revalidatePath('/');
 }
 
 export async function getGeneralSetting(
