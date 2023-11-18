@@ -18,6 +18,7 @@ import {
   SettingPagesTable,
 } from '@/db/schema';
 import { eq } from 'drizzle-orm';
+import { revalidatePath } from 'next/cache';
 
 export async function getAllSettingPages(): Promise<SettingPage[]> {
   return db.query.SettingPagesTable.findMany();
@@ -117,4 +118,5 @@ export async function saveGeneralSetting(generalSetting: NewGeneralSetting) {
   } else {
     await db.insert(GeneralSettingsTable).values(generalSetting);
   }
+  revalidatePath('/');
 }
