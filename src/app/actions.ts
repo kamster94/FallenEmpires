@@ -1,9 +1,12 @@
 'use server';
 
 import {
+  Ancestry,
+  AncestryTag,
   Campaign,
   db,
   GeneralSetting,
+  NewAncestry,
   NewCampaign,
   NewGeneralSetting,
   NewRulePage,
@@ -14,13 +17,15 @@ import {
   Tag,
 } from '@/db/models';
 import {
+  AncestriesTable,
+  AncestriesTagsTable,
   CampaignsTable,
   GeneralSettingsTable,
   RulePagesTable,
   SettingPagesTable,
   TagsTable,
 } from '@/db/schema';
-import { eq } from 'drizzle-orm';
+import { and, eq } from 'drizzle-orm';
 import { revalidatePath } from 'next/cache';
 
 export async function getAllSettingPages(): Promise<SettingPage[]> {
@@ -154,5 +159,71 @@ export async function saveTag(tag: NewTag) {
 
 export async function deleteTag(id: number) {
   await db.delete(TagsTable).where(eq(TagsTable.id, id));
+  revalidatePath('/');
+}
+
+export async function getAllAncestries(): Promise<Ancestry[]> {
+  return db.query.AncestriesTable.findMany({
+    with: {
+      ancestriesTags: true,
+    },
+  });
+}
+
+export async function getAncestry(slug: string): Promise<Ancestry | undefined> {
+  return db.query.AncestriesTable.findFirst({
+    where: eq(AncestriesTable.slug, slug),
+    with: {
+      ancestriesTags: true,
+    },
+  });
+}
+
+export async function saveAncestry(ancestry: NewAncestry) {
+  if (ancestry.id) {
+    const updated = await db
+      .update(AncestriesTable)
+      .set({ title: ancestry.title, slug: ancestry.slug, text: ancestry.text })
+      .where(eq(AncestriesTable.id, ancestry.id))
+      .returning();
+    revalidatePath('/');
+    return updated;
+  } else {
+    const inserted = await db
+      .insert(AncestriesTable)
+      .values(ancestry)
+      .returning();
+    revalidatePath('/');
+    return inserted;
+  }
+}
+
+export async function deleteAncestry(id: number) {
+  await db.delete(AncestriesTable).where(eq(AncestriesTable.id, id));
+  revalidatePath('/');
+}
+
+export async function saveAncestriesTags(
+  ancestryId: number,
+  ancestriesTags: AncestryTag[]
+) {
+  await db
+    .delete(AncestriesTagsTable)
+    .where(eq(AncestriesTagsTable.ancestryId, ancestryId));
+  if (ancestriesTags.length) {
+    await db.insert(AncestriesTagsTable).values([...ancestriesTags]);
+  }
+  revalidatePath('/');
+}
+
+export async function deleteAncestryTag(ancestryTag: AncestryTag) {
+  await db
+    .delete(AncestriesTagsTable)
+    .where(
+      and(
+        eq(AncestriesTagsTable.tagId, ancestryTag.tagId),
+        eq(AncestriesTagsTable.ancestryId, ancestryTag.ancestryId)
+      )
+    );
   revalidatePath('/');
 }

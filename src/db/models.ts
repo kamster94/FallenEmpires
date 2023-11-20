@@ -23,8 +23,12 @@ export type NewSettingPage = InferInsertModel<typeof schema.SettingPagesTable>;
 export type Tag = InferSelectModel<typeof schema.TagsTable>;
 export type NewTag = InferInsertModel<typeof schema.TagsTable>;
 
-export type Ancestry = InferSelectModel<typeof schema.AncestriesTable>;
-export type NewAncestry = InferInsertModel<typeof schema.AncestriesTable>;
+export type Ancestry = InferSelectModel<typeof schema.AncestriesTable> & {
+  ancestriesTags: AncestryTag[];
+};
+export type NewAncestry = InferInsertModel<typeof schema.AncestriesTable> & {
+  ancestriesTags?: AncestryTag[];
+};
 
 export type AncestryTag = InferSelectModel<typeof schema.AncestriesTagsTable>;
 

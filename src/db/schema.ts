@@ -73,13 +73,15 @@ export const AncestriesTagsTable = pgTable(
   },
   (ancestriesTags) => {
     return {
-      pk: primaryKey(ancestriesTags.ancestryId, ancestriesTags.tagId),
+      pk: primaryKey({
+        columns: [ancestriesTags.ancestryId, ancestriesTags.tagId],
+      }),
     };
   }
 );
 
 export const AncestriesRelations = relations(AncestriesTable, ({ many }) => ({
-  AncestriesTagsTable: many(AncestriesTagsTable),
+  ancestriesTags: many(AncestriesTagsTable),
 }));
 
 export const AncestriesToTagsRelations = relations(
@@ -115,7 +117,9 @@ export const HeritagesTagsTable = pgTable(
   },
   (heritagesTags) => {
     return {
-      pk: primaryKey(heritagesTags.heritageId, heritagesTags.tagId),
+      pk: primaryKey({
+        columns: [heritagesTags.heritageId, heritagesTags.tagId],
+      }),
     };
   }
 );
@@ -157,7 +161,7 @@ export const FeatsTagsTable = pgTable(
   },
   (featsTags) => {
     return {
-      pk: primaryKey(featsTags.featId, featsTags.tagId),
+      pk: primaryKey({ columns: [featsTags.featId, featsTags.tagId] }),
     };
   }
 );

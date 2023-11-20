@@ -14,7 +14,7 @@ const TextInput = ({ className, ...props }: Props) => {
     <input
       type='text'
       className={classnames(
-        'border-2 border-primary bg-secondary p-2',
+        'border-2 border-primary bg-secondary p-2 focus:border-opacity-50 focus:outline-0',
         className
       )}
       {...props}
