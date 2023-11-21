@@ -25,7 +25,7 @@ import {
   SettingPagesTable,
   TagsTable,
 } from '@/db/schema';
-import { and, eq } from 'drizzle-orm';
+import { eq, inArray } from 'drizzle-orm';
 import { revalidatePath } from 'next/cache';
 
 export async function getAllSettingPages(): Promise<SettingPage[]> {
@@ -139,6 +139,15 @@ export async function getAllTags(): Promise<Tag[]> {
   return db.query.TagsTable.findMany();
 }
 
+export async function getTagsByIds(ids: number[]): Promise<Tag[]> {
+  if (ids.length) {
+    return db.query.TagsTable.findMany({
+      where: inArray(TagsTable.id, ids),
+    });
+  }
+  return [];
+}
+
 export async function getTag(id: number): Promise<Tag | undefined> {
   return db.query.TagsTable.findFirst({
     where: eq(TagsTable.id, id),
@@ -199,6 +208,9 @@ export async function saveAncestry(ancestry: NewAncestry) {
 }
 
 export async function deleteAncestry(id: number) {
+  await db
+    .delete(AncestriesTagsTable)
+    .where(eq(AncestriesTagsTable.ancestryId, id));
   await db.delete(AncestriesTable).where(eq(AncestriesTable.id, id));
   revalidatePath('/');
 }
@@ -213,17 +225,5 @@ export async function saveAncestriesTags(
   if (ancestriesTags.length) {
     await db.insert(AncestriesTagsTable).values([...ancestriesTags]);
   }
-  revalidatePath('/');
-}
-
-export async function deleteAncestryTag(ancestryTag: AncestryTag) {
-  await db
-    .delete(AncestriesTagsTable)
-    .where(
-      and(
-        eq(AncestriesTagsTable.tagId, ancestryTag.tagId),
-        eq(AncestriesTagsTable.ancestryId, ancestryTag.ancestryId)
-      )
-    );
   revalidatePath('/');
 }

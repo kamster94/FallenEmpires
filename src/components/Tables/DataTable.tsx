@@ -3,7 +3,7 @@
 import React, { ReactNode } from 'react';
 
 export interface Row {
-  cells: string[];
+  cells: ReactNode[];
   actions: ReactNode;
 }
 
