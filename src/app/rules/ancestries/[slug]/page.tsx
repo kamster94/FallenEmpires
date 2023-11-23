@@ -8,12 +8,15 @@ import MarkdownContent from '@/components/Markdown/MarkdownContent';
 import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import useRoute from '@/hooks/useRoute';
+import { RoutePath } from '@/enums';
 
 export default async function AncestryPage({
   params,
 }: {
   params: { slug: string };
 }) {
+  const { buildRoute } = useRoute();
   const ancestry = await getAncestry(params.slug);
 
   if (!ancestry) {
@@ -34,7 +37,10 @@ export default async function AncestryPage({
         <MarkdownContent>{ancestry.text}</MarkdownContent>
         <div className='mt-8 md:px-12'>
           <Link
-            href='/rules/ancestries'
+            href={buildRoute({
+              category: RoutePath.Rules,
+              subcategory: RoutePath.Ancestries,
+            })}
             className='text-gray-600 hover:text-black'
           >
             <FontAwesomeIcon icon={faArrowLeft} width={16} height={14} /> Back

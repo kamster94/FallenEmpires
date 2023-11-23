@@ -13,52 +13,25 @@ import {
   getAllRulePages,
   getAllSettingPages,
 } from '@/app/actions';
+import useRoute from '@/hooks/useRoute';
+import { RoutePath } from '@/enums';
 
 interface Props {
   className?: string;
 }
 
-const defaultSettingLinks: NavigationIemProps[] = [
-  {
-    label: 'Cultures',
-    route: '/setting/cultures',
-  },
-  {
-    label: 'Backgrounds',
-    route: '/setting/backgrounds',
-  },
-  {
-    label: 'Languages',
-    route: '/setting/languages',
-  },
-  {
-    label: 'Locations',
-    route: '/setting/locations',
-  },
-];
-
-const defaultRulesLinks: NavigationIemProps[] = [
-  {
-    label: 'Ancestries',
-    route: '/rules/ancestries',
-  },
-  {
-    label: 'Heritages',
-    route: '/rules/heritages',
-  },
-  {
-    label: 'Feats',
-    route: '/rules/feats',
-  },
-];
-
 async function MainNavigation({ className }: Props) {
+  const { buildRoute } = useRoute();
+
   const databaseSettingLinks: NavigationIemProps[] = (
     await getAllSettingPages()
   ).map((settingPage) => {
     return {
       label: settingPage.title,
-      route: `/setting/${settingPage.slug}`,
+      route: buildRoute({
+        category: RoutePath.Setting,
+        slug: settingPage.slug,
+      }),
     };
   });
 
@@ -66,7 +39,10 @@ async function MainNavigation({ className }: Props) {
     (rulePage) => {
       return {
         label: rulePage.title,
-        route: `/rules/${rulePage.slug}`,
+        route: buildRoute({
+          category: RoutePath.Rules,
+          slug: rulePage.slug,
+        }),
       };
     }
   );
@@ -76,9 +52,67 @@ async function MainNavigation({ className }: Props) {
   ).map((campaign) => {
     return {
       label: campaign.name,
-      route: `/campaign/${campaign.slug}`,
+      route: buildRoute({
+        category: RoutePath.Campaigns,
+        slug: campaign.slug,
+      }),
     };
   });
+
+  const defaultSettingLinks: NavigationIemProps[] = [
+    {
+      label: 'Cultures',
+      route: buildRoute({
+        category: RoutePath.Setting,
+        subcategory: RoutePath.Cultures,
+      }),
+    },
+    {
+      label: 'Backgrounds',
+      route: buildRoute({
+        category: RoutePath.Setting,
+        subcategory: RoutePath.Backgrounds,
+      }),
+    },
+    {
+      label: 'Languages',
+      route: buildRoute({
+        category: RoutePath.Setting,
+        subcategory: RoutePath.Languages,
+      }),
+    },
+    {
+      label: 'Locations',
+      route: buildRoute({
+        category: RoutePath.Setting,
+        subcategory: RoutePath.Locations,
+      }),
+    },
+  ];
+
+  const defaultRulesLinks: NavigationIemProps[] = [
+    {
+      label: 'Ancestries',
+      route: buildRoute({
+        category: RoutePath.Rules,
+        subcategory: RoutePath.Ancestries,
+      }),
+    },
+    {
+      label: 'Heritages',
+      route: buildRoute({
+        category: RoutePath.Rules,
+        subcategory: RoutePath.Heritages,
+      }),
+    },
+    {
+      label: 'Feats',
+      route: buildRoute({
+        category: RoutePath.Rules,
+        subcategory: RoutePath.Feats,
+      }),
+    },
+  ];
 
   return (
     <div className={className}>
@@ -107,7 +141,9 @@ async function MainNavigation({ className }: Props) {
         navigationCategory={{
           label: 'Blog',
           icon: faNewspaper,
-          route: '/blog',
+          route: buildRoute({
+            category: RoutePath.Blog,
+          }),
         }}
       />
       <NavigationCategoryMenu

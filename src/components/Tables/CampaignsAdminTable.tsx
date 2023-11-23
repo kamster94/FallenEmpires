@@ -5,9 +5,13 @@ import { deleteCampaign, getAllCampaigns } from '@/app/actions';
 import DataTable, { Row } from '@/components/Tables/DataTable';
 import TableActions from '@/components/Tables/TableActions';
 import { Campaign } from '@/db/models';
+import useRoute from '@/hooks/useRoute';
+import { RoutePath } from '@/enums';
 
 const CampaignsAdminTable = () => {
+  const { buildRoute } = useRoute();
   const [campaigns, setCampaigns] = useState<Campaign[]>([]);
+
   async function refresh() {
     setCampaigns(await getAllCampaigns());
   }
@@ -29,7 +33,11 @@ const CampaignsAdminTable = () => {
       cells: [campaign.name, campaign.slug],
       actions: (
         <TableActions
-          editRoute={`/admin/campaigns/${campaign.slug}`}
+          editRoute={buildRoute({
+            category: RoutePath.Campaigns,
+            slug: campaign.slug,
+            admin: true,
+          })}
           deleteAction={() => handleDelete(campaign.id)}
         />
       ),

@@ -3,8 +3,12 @@ import SectionHeader from '@/components/SectionHeader';
 import ButtonLink from '@/components/ButtonLink';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import CampaignsAdminTable from '@/components/Tables/CampaignsAdminTable';
+import useRoute from '@/hooks/useRoute';
+import { RoutePath } from '@/enums';
 
 export default function AdminCampaigns() {
+  const { buildRoute } = useRoute();
+
   return (
     <Section>
       <SectionHeader>Campaigns</SectionHeader>
@@ -12,7 +16,11 @@ export default function AdminCampaigns() {
         <ButtonLink
           label='New Campaign'
           icon={faPlus}
-          route='/admin/campaigns/create'
+          route={buildRoute({
+            category: RoutePath.Campaigns,
+            slug: 'create',
+            admin: true,
+          })}
         />
         <CampaignsAdminTable />
       </div>

@@ -5,9 +5,13 @@ import { deleteTag, getAllTags } from '@/app/actions';
 import DataTable, { Row } from '@/components/Tables/DataTable';
 import TableActions from '@/components/Tables/TableActions';
 import { Tag } from '@/db/models';
+import useRoute from '@/hooks/useRoute';
+import { RoutePath } from '@/enums';
 
 const TagsAdminTable = () => {
+  const { buildRoute } = useRoute();
   const [tags, setTags] = useState<Tag[]>([]);
+
   async function refresh() {
     setTags(await getAllTags());
   }
@@ -29,7 +33,11 @@ const TagsAdminTable = () => {
       cells: [tag.label, tag.link ?? ''],
       actions: (
         <TableActions
-          editRoute={`/admin/tags/${tag.id}`}
+          editRoute={buildRoute({
+            category: RoutePath.Tags,
+            slug: tag.id.toString(),
+            admin: true,
+          })}
           deleteAction={() => handleDelete(tag.id)}
         />
       ),

@@ -11,6 +11,8 @@ import dynamic from 'next/dynamic';
 import { saveAncestriesTags, saveAncestry } from '@/app/actions';
 import { useRouter } from 'next/navigation';
 import TagInput from '@/components/Forms/TagInput';
+import useRoute from '@/hooks/useRoute';
+import { RoutePath } from '@/enums';
 
 const MarkdownEditor = dynamic(
   () => import('@/components/Markdown/MarkdownEditor'),
@@ -25,6 +27,7 @@ const AncestryForm = ({ ancestry }: Props) => {
   const [workingAncestry, setWorkingAncestry] = useState<NewAncestry>(ancestry);
   const { createSlug } = useFormHelper();
   const router = useRouter();
+  const { buildRoute } = useRoute();
 
   function handleChangeWorkingValues({
     title,
@@ -61,7 +64,13 @@ const AncestryForm = ({ ancestry }: Props) => {
           ancestryTag.ancestryId === 0 ? result.id : ancestryTag.ancestryId,
       })) ?? []
     );
-    router.push('/admin/rules/ancestries');
+    router.push(
+      buildRoute({
+        category: RoutePath.Rules,
+        subcategory: RoutePath.Ancestries,
+        admin: true,
+      })
+    );
   }
 
   return (

@@ -8,6 +8,8 @@ import Button from '@/components/Button';
 import { faSave } from '@fortawesome/free-solid-svg-icons';
 import { saveTag } from '@/app/actions';
 import { useRouter } from 'next/navigation';
+import useRoute from '@/hooks/useRoute';
+import { RoutePath } from '@/enums';
 
 interface Props {
   tag: NewTag;
@@ -16,6 +18,7 @@ interface Props {
 const TagForm = ({ tag }: Props) => {
   const [workingTag, setWorkingTag] = useState<NewTag>(tag);
   const router = useRouter();
+  const { buildRoute } = useRoute();
 
   function handleChangeWorkingValues({
     label,
@@ -35,7 +38,12 @@ const TagForm = ({ tag }: Props) => {
 
   async function handleSave() {
     await saveTag(workingTag);
-    router.push('/admin/tags');
+    router.push(
+      buildRoute({
+        category: RoutePath.Tags,
+        admin: true,
+      })
+    );
   }
 
   return (

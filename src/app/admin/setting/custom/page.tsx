@@ -3,8 +3,12 @@ import SectionHeader from '@/components/SectionHeader';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import ButtonLink from '@/components/ButtonLink';
 import SettingPagesAdminTable from '@/components/Tables/SettingPagesAdminTable';
+import useRoute from '@/hooks/useRoute';
+import { RoutePath } from '@/enums';
 
 export default async function AdminCustomSettingPages() {
+  const { buildRoute } = useRoute();
+
   return (
     <Section>
       <SectionHeader>Custom Setting Pages</SectionHeader>
@@ -12,7 +16,12 @@ export default async function AdminCustomSettingPages() {
         <ButtonLink
           label='New Page'
           icon={faPlus}
-          route='/admin/setting/custom/create'
+          route={buildRoute({
+            category: RoutePath.Setting,
+            subcategory: RoutePath.CustomPages,
+            slug: 'create',
+            admin: true,
+          })}
         />
         <SettingPagesAdminTable />
       </div>

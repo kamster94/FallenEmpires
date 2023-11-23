@@ -5,9 +5,13 @@ import { deleteSettingPage, getAllSettingPages } from '@/app/actions';
 import DataTable, { Row } from '@/components/Tables/DataTable';
 import TableActions from '@/components/Tables/TableActions';
 import { SettingPage } from '@/db/models';
+import useRoute from '@/hooks/useRoute';
+import { RoutePath } from '@/enums';
 
 const SettingPagesAdminTable = () => {
+  const { buildRoute } = useRoute();
   const [settingPages, setSettingPages] = useState<SettingPage[]>([]);
+
   async function refresh() {
     setSettingPages(await getAllSettingPages());
   }
@@ -29,7 +33,12 @@ const SettingPagesAdminTable = () => {
       cells: [settingPage.title, settingPage.slug],
       actions: (
         <TableActions
-          editRoute={`/admin/setting/custom/${settingPage.slug}`}
+          editRoute={buildRoute({
+            category: RoutePath.Setting,
+            subcategory: RoutePath.CustomPages,
+            slug: settingPage.slug,
+            admin: true,
+          })}
           deleteAction={() => handleDelete(settingPage.id)}
         />
       ),

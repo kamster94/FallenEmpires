@@ -5,9 +5,13 @@ import { deleteRulePage, getAllRulePages } from '@/app/actions';
 import DataTable, { Row } from '@/components/Tables/DataTable';
 import TableActions from '@/components/Tables/TableActions';
 import { RulePage } from '@/db/models';
+import useRoute from '@/hooks/useRoute';
+import { RoutePath } from '@/enums';
 
 const RulePagesAdminTable = () => {
+  const { buildRoute } = useRoute();
   const [rulePages, setRulePages] = useState<RulePage[]>([]);
+
   async function refresh() {
     setRulePages(await getAllRulePages());
   }
@@ -29,7 +33,12 @@ const RulePagesAdminTable = () => {
       cells: [rulePage.title, rulePage.slug],
       actions: (
         <TableActions
-          editRoute={`/admin/rules/custom/${rulePage.slug}`}
+          editRoute={buildRoute({
+            category: RoutePath.Rules,
+            subcategory: RoutePath.CustomPages,
+            slug: rulePage.slug,
+            admin: true,
+          })}
           deleteAction={() => handleDelete(rulePage.id)}
         />
       ),

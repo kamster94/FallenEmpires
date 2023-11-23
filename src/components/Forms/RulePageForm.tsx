@@ -10,6 +10,8 @@ import { faSave } from '@fortawesome/free-solid-svg-icons';
 import dynamic from 'next/dynamic';
 import { saveRulePage } from '@/app/actions';
 import { useRouter } from 'next/navigation';
+import useRoute from '@/hooks/useRoute';
+import { RoutePath } from '@/enums';
 
 const MarkdownEditor = dynamic(
   () => import('@/components/Markdown/MarkdownEditor'),
@@ -24,6 +26,7 @@ const RulePageForm = ({ rulePage }: Props) => {
   const [workingRulePage, setWorkingRulePage] = useState<NewRulePage>(rulePage);
   const { createSlug } = useFormHelper();
   const router = useRouter();
+  const { buildRoute } = useRoute();
 
   function handleChangeWorkingValues({
     title,
@@ -46,7 +49,13 @@ const RulePageForm = ({ rulePage }: Props) => {
 
   async function handleSave() {
     await saveRulePage(workingRulePage);
-    router.push('/admin/rules/custom');
+    router.push(
+      buildRoute({
+        category: RoutePath.Rules,
+        subcategory: RoutePath.CustomPages,
+        admin: true,
+      })
+    );
   }
 
   return (

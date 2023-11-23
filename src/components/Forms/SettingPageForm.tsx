@@ -10,6 +10,8 @@ import { faSave } from '@fortawesome/free-solid-svg-icons';
 import dynamic from 'next/dynamic';
 import { saveSettingPage } from '@/app/actions';
 import { useRouter } from 'next/navigation';
+import useRoute from '@/hooks/useRoute';
+import { RoutePath } from '@/enums';
 
 const MarkdownEditor = dynamic(
   () => import('@/components/Markdown/MarkdownEditor'),
@@ -25,6 +27,7 @@ const SettingPageForm = ({ settingPage }: Props) => {
     useState<NewSettingPage>(settingPage);
   const { createSlug } = useFormHelper();
   const router = useRouter();
+  const { buildRoute } = useRoute();
 
   function handleChangeWorkingValues({
     title,
@@ -47,7 +50,13 @@ const SettingPageForm = ({ settingPage }: Props) => {
 
   async function handleSave() {
     await saveSettingPage(workingSettingPage);
-    router.push('/admin/setting/custom');
+    router.push(
+      buildRoute({
+        category: RoutePath.Setting,
+        subcategory: RoutePath.CustomPages,
+        admin: true,
+      })
+    );
   }
 
   return (

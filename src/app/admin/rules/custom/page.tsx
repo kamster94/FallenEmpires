@@ -3,8 +3,12 @@ import SectionHeader from '@/components/SectionHeader';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import ButtonLink from '@/components/ButtonLink';
 import RulePagesAdminTable from '@/components/Tables/RulePagesAdminTable';
+import { RoutePath } from '@/enums';
+import useRoute from '@/hooks/useRoute';
 
 export default async function AdminCustomRulePages() {
+  const { buildRoute } = useRoute();
+
   return (
     <Section>
       <SectionHeader>Custom Rule Pages</SectionHeader>
@@ -12,7 +16,12 @@ export default async function AdminCustomRulePages() {
         <ButtonLink
           label='New Page'
           icon={faPlus}
-          route='/admin/rules/custom/create'
+          route={buildRoute({
+            category: RoutePath.Rules,
+            subcategory: RoutePath.CustomPages,
+            slug: 'create',
+            admin: true,
+          })}
         />
         <RulePagesAdminTable />
       </div>

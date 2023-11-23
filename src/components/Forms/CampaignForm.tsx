@@ -10,6 +10,8 @@ import { faSave } from '@fortawesome/free-solid-svg-icons';
 import dynamic from 'next/dynamic';
 import { saveCampaign } from '@/app/actions';
 import { useRouter } from 'next/navigation';
+import useRoute from '@/hooks/useRoute';
+import { RoutePath } from '@/enums';
 
 const MarkdownEditor = dynamic(
   () => import('@/components/Markdown/MarkdownEditor'),
@@ -24,6 +26,7 @@ const CampaignForm = ({ campaign }: Props) => {
   const [workingCampaign, setWorkingCampaign] = useState<NewCampaign>(campaign);
   const { createSlug } = useFormHelper();
   const router = useRouter();
+  const { buildRoute } = useRoute();
 
   function handleChangeWorkingValues({
     name,
@@ -46,7 +49,12 @@ const CampaignForm = ({ campaign }: Props) => {
 
   async function handleSave() {
     await saveCampaign(workingCampaign);
-    router.push('/admin/campaigns');
+    router.push(
+      buildRoute({
+        category: RoutePath.Campaigns,
+        admin: true,
+      })
+    );
   }
 
   return (

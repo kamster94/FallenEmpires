@@ -11,57 +11,99 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import NavigationCategoryDisclosure from '@/components/Navigation/NavigationCategoryDisclosure';
 import { NavigationIemProps } from '@/components/Navigation/NavigationItem';
-
-const defaultSettingLinks: NavigationIemProps[] = [
-  {
-    label: 'Custom Setting Pages',
-    route: '/admin/setting/custom',
-  },
-  {
-    label: 'Cultures',
-    route: '/admin/setting/cultures',
-  },
-  {
-    label: 'Backgrounds',
-    route: '/admin/setting/ancestries',
-  },
-  {
-    label: 'Languages',
-    route: '/admin/setting/languages',
-  },
-  {
-    label: 'Locations',
-    route: '/admin/setting/locations',
-  },
-];
-
-const defaultRulesLinks: NavigationIemProps[] = [
-  {
-    label: 'Custom Rules Pages',
-    route: '/admin/rules/custom',
-  },
-  {
-    label: 'Ancestries',
-    route: '/admin/rules/ancestries',
-  },
-  {
-    label: 'Heritages',
-    route: '/admin/rules/heritages',
-  },
-  {
-    label: 'Feats',
-    route: '/admin/rules/feats',
-  },
-];
+import useRoute from '@/hooks/useRoute';
+import { RoutePath } from '@/enums';
 
 const AdminNavigation = () => {
+  const { buildRoute } = useRoute();
+  const defaultSettingLinks: NavigationIemProps[] = [
+    {
+      label: 'Custom Setting Pages',
+      route: buildRoute({
+        category: RoutePath.Setting,
+        subcategory: RoutePath.CustomPages,
+        admin: true,
+      }),
+    },
+    {
+      label: 'Cultures',
+      route: buildRoute({
+        category: RoutePath.Setting,
+        subcategory: RoutePath.Cultures,
+        admin: true,
+      }),
+    },
+    {
+      label: 'Backgrounds',
+      route: buildRoute({
+        category: RoutePath.Setting,
+        subcategory: RoutePath.Backgrounds,
+        admin: true,
+      }),
+    },
+    {
+      label: 'Languages',
+      route: buildRoute({
+        category: RoutePath.Setting,
+        subcategory: RoutePath.Languages,
+        admin: true,
+      }),
+    },
+    {
+      label: 'Locations',
+      route: buildRoute({
+        category: RoutePath.Setting,
+        subcategory: RoutePath.Locations,
+        admin: true,
+      }),
+    },
+  ];
+
+  const defaultRulesLinks: NavigationIemProps[] = [
+    {
+      label: 'Custom Rules Pages',
+      route: buildRoute({
+        category: RoutePath.Rules,
+        subcategory: RoutePath.CustomPages,
+        admin: true,
+      }),
+    },
+    {
+      label: 'Ancestries',
+      route: buildRoute({
+        category: RoutePath.Rules,
+        subcategory: RoutePath.Ancestries,
+        admin: true,
+      }),
+    },
+    {
+      label: 'Heritages',
+      route: buildRoute({
+        category: RoutePath.Rules,
+        subcategory: RoutePath.Heritages,
+        admin: true,
+      }),
+    },
+    {
+      label: 'Feats',
+      route: buildRoute({
+        category: RoutePath.Rules,
+        subcategory: RoutePath.Feats,
+        admin: true,
+      }),
+    },
+  ];
+
   return (
     <div className='mx-auto w-full max-w-md'>
       <NavigationCategoryDisclosure
         navigationCategory={{
           label: 'General Settings',
           icon: faCog,
-          route: '/admin/general',
+          route: buildRoute({
+            category: RoutePath.GeneralSettings,
+            admin: true,
+          }),
         }}
       />
       <NavigationCategoryDisclosure
@@ -82,21 +124,30 @@ const AdminNavigation = () => {
         navigationCategory={{
           label: 'Campaigns',
           icon: faFlag,
-          route: '/admin/campaigns',
+          route: buildRoute({
+            category: RoutePath.Campaigns,
+            admin: true,
+          }),
         }}
       />
       <NavigationCategoryDisclosure
         navigationCategory={{
           label: 'Tags',
           icon: faTags,
-          route: '/admin/tags',
+          route: buildRoute({
+            category: RoutePath.Tags,
+            admin: true,
+          }),
         }}
       />
       <NavigationCategoryDisclosure
         navigationCategory={{
           label: 'Blog',
           icon: faNewspaper,
-          route: '/admin/blog',
+          route: buildRoute({
+            category: RoutePath.Blog,
+            admin: true,
+          }),
         }}
       />
     </div>
