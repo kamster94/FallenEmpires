@@ -7,10 +7,12 @@
 }
 
 .markdown-editor {
+  --baseBg: rgb(93 0 0);
   --baseBgSubtle: rgb(93 0 0);
   --baseText: rgb(234 227 216);
   --baseBorderHover: rgb(234 227 216 / 50%);
   --baseBase: rgb(93 0 0);
   --baseBgHover: rgb(255 255 255 / 30%);
+  --baseBgActive: rgb(255 255 255 / 30%);
   --accentBgActive: rgb(255 255 255 / 50%);
 }
