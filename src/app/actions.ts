@@ -6,9 +6,12 @@ import {
   Campaign,
   db,
   GeneralSetting,
+  Heritage,
+  HeritageTag,
   NewAncestry,
   NewCampaign,
   NewGeneralSetting,
+  NewHeritage,
   NewRulePage,
   NewSettingPage,
   NewTag,
@@ -21,6 +24,8 @@ import {
   AncestriesTagsTable,
   CampaignsTable,
   GeneralSettingsTable,
+  HeritagesTable,
+  HeritagesTagsTable,
   RulePagesTable,
   SettingPagesTable,
   TagsTable,
@@ -224,6 +229,63 @@ export async function saveAncestriesTags(
     .where(eq(AncestriesTagsTable.ancestryId, ancestryId));
   if (ancestriesTags.length) {
     await db.insert(AncestriesTagsTable).values([...ancestriesTags]);
+  }
+  revalidatePath('/');
+}
+
+export async function getAllHeritages(): Promise<Heritage[]> {
+  return db.query.HeritagesTable.findMany({
+    with: {
+      heritagesTags: true,
+    },
+  });
+}
+
+export async function getHeritage(slug: string): Promise<Heritage | undefined> {
+  return db.query.HeritagesTable.findFirst({
+    where: eq(HeritagesTable.slug, slug),
+    with: {
+      heritagesTags: true,
+    },
+  });
+}
+
+export async function saveHeritage(heritage: NewHeritage) {
+  if (heritage.id) {
+    const updated = await db
+      .update(HeritagesTable)
+      .set({ title: heritage.title, slug: heritage.slug, text: heritage.text })
+      .where(eq(HeritagesTable.id, heritage.id))
+      .returning();
+    revalidatePath('/');
+    return updated;
+  } else {
+    const inserted = await db
+      .insert(HeritagesTable)
+      .values(heritage)
+      .returning();
+    revalidatePath('/');
+    return inserted;
+  }
+}
+
+export async function deleteHeritage(id: number) {
+  await db
+    .delete(HeritagesTagsTable)
+    .where(eq(HeritagesTagsTable.heritageId, id));
+  await db.delete(HeritagesTable).where(eq(HeritagesTable.id, id));
+  revalidatePath('/');
+}
+
+export async function saveHeritagesTags(
+  heritageId: number,
+  heritagesTags: HeritageTag[]
+) {
+  await db
+    .delete(HeritagesTagsTable)
+    .where(eq(HeritagesTagsTable.heritageId, heritageId));
+  if (heritagesTags.length) {
+    await db.insert(HeritagesTagsTable).values([...heritagesTags]);
   }
   revalidatePath('/');
 }

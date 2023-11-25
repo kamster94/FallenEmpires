@@ -125,7 +125,7 @@ export const HeritagesTagsTable = pgTable(
 );
 
 export const HeritagesRelations = relations(HeritagesTable, ({ many }) => ({
-  HeritagesTagsTable: many(HeritagesTagsTable),
+  heritagesTags: many(HeritagesTagsTable),
 }));
 
 export const HeritagesToTagsRelations = relations(
