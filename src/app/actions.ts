@@ -5,11 +5,14 @@ import {
   AncestryTag,
   Campaign,
   db,
+  Feat,
+  FeatTag,
   GeneralSetting,
   Heritage,
   HeritageTag,
   NewAncestry,
   NewCampaign,
+  NewFeat,
   NewGeneralSetting,
   NewHeritage,
   NewRulePage,
@@ -23,6 +26,8 @@ import {
   AncestriesTable,
   AncestriesTagsTable,
   CampaignsTable,
+  FeatsTable,
+  FeatsTagsTable,
   GeneralSettingsTable,
   HeritagesTable,
   HeritagesTagsTable,
@@ -286,6 +291,53 @@ export async function saveHeritagesTags(
     .where(eq(HeritagesTagsTable.heritageId, heritageId));
   if (heritagesTags.length) {
     await db.insert(HeritagesTagsTable).values([...heritagesTags]);
+  }
+  revalidatePath('/');
+}
+
+export async function getAllFeats(): Promise<Feat[]> {
+  return db.query.FeatsTable.findMany({
+    with: {
+      featsTags: true,
+    },
+  });
+}
+
+export async function getFeat(slug: string): Promise<Feat | undefined> {
+  return db.query.FeatsTable.findFirst({
+    where: eq(FeatsTable.slug, slug),
+    with: {
+      featsTags: true,
+    },
+  });
+}
+
+export async function saveFeat(feat: NewFeat) {
+  if (feat.id) {
+    const updated = await db
+      .update(FeatsTable)
+      .set({ title: feat.title, slug: feat.slug, text: feat.text })
+      .where(eq(FeatsTable.id, feat.id))
+      .returning();
+    revalidatePath('/');
+    return updated;
+  } else {
+    const inserted = await db.insert(FeatsTable).values(feat).returning();
+    revalidatePath('/');
+    return inserted;
+  }
+}
+
+export async function deleteFeat(id: number) {
+  await db.delete(FeatsTagsTable).where(eq(FeatsTagsTable.featId, id));
+  await db.delete(FeatsTable).where(eq(FeatsTable.id, id));
+  revalidatePath('/');
+}
+
+export async function saveFeatsTags(featId: number, featsTags: FeatTag[]) {
+  await db.delete(FeatsTagsTable).where(eq(FeatsTagsTable.featId, featId));
+  if (featsTags.length) {
+    await db.insert(FeatsTagsTable).values([...featsTags]);
   }
   revalidatePath('/');
 }

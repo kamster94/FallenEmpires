@@ -167,7 +167,7 @@ export const FeatsTagsTable = pgTable(
 );
 
 export const FeatsRelations = relations(FeatsTable, ({ many }) => ({
-  FeatsTagsTable: many(FeatsTagsTable),
+  featsTags: many(FeatsTagsTable),
 }));
 
 export const FeatsToTagsRelations = relations(FeatsTagsTable, ({ one }) => ({

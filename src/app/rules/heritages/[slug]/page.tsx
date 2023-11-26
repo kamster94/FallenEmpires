@@ -5,11 +5,9 @@ import { getHeritage, getTagsByIds } from '@/app/actions';
 import { notFound } from 'next/navigation';
 import TagPillsList from '@/components/TagPillsList';
 import MarkdownContent from '@/components/Markdown/MarkdownContent';
-import Link from 'next/link';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import useRoute from '@/hooks/useRoute';
 import { RoutePath } from '@/enums';
+import NavigateBack from '@/components/NavigateBack';
 
 export default async function HeritagePage({
   params,
@@ -31,22 +29,21 @@ export default async function HeritagePage({
     <Page>
       <PageHeader title={heritage.title} />
       <Section>
-        <div className='mb-4 flex justify-center'>
-          <TagPillsList parentId={heritage.id} tags={tags} />
-        </div>
+        <TagPillsList
+          parentId={heritage.id}
+          tags={tags}
+          className='mb-4 justify-center'
+        />
         <MarkdownContent>{heritage.text}</MarkdownContent>
-        <div className='mt-8 md:px-12'>
-          <Link
-            href={buildRoute({
-              category: RoutePath.Rules,
-              subcategory: RoutePath.Heritages,
-            })}
-            className='text-gray-600 hover:text-black'
-          >
-            <FontAwesomeIcon icon={faArrowLeft} width={16} height={14} /> Back
-            to Heritages
-          </Link>
-        </div>
+        <NavigateBack
+          route={buildRoute({
+            category: RoutePath.Rules,
+            subcategory: RoutePath.Heritages,
+          })}
+          label={RoutePath.Heritages}
+          type='link'
+          className='mt-8 md:px-12'
+        />
       </Section>
     </Page>
   );

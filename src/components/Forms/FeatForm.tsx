@@ -3,11 +3,12 @@
 import React, { Suspense, useState } from 'react';
 import Label from '@/components/Forms/Label';
 import TextInput from '@/components/Forms/TextInput';
-import { NewSettingPage } from '@/db/models';
+import { NewFeat } from '@/db/models';
 import useFormHelper from '@/hooks/useFormHelper';
 import dynamic from 'next/dynamic';
-import { saveSettingPage } from '@/app/actions';
+import { saveFeatsTags, saveFeat } from '@/app/actions';
 import { useRouter } from 'next/navigation';
+import TagInput from '@/components/Forms/TagInput';
 import useRoute from '@/hooks/useRoute';
 import { RoutePath } from '@/enums';
 import Form from '@/components/Forms/Form';
@@ -20,12 +21,11 @@ const MarkdownEditor = dynamic(
 );
 
 interface Props {
-  settingPage: NewSettingPage;
+  feat: NewFeat;
 }
 
-const SettingPageForm = ({ settingPage }: Props) => {
-  const [workingSettingPage, setWorkingSettingPage] =
-    useState<NewSettingPage>(settingPage);
+const FeatForm = ({ feat }: Props) => {
+  const [workingFeat, setWorkingFeat] = useState<NewFeat>(feat);
   const { createSlug } = useFormHelper();
   const router = useRouter();
   const { buildRoute } = useRoute();
@@ -34,27 +34,40 @@ const SettingPageForm = ({ settingPage }: Props) => {
     title,
     text,
     slug,
+    tagIds,
   }: {
     title?: string;
     text?: string;
     slug?: string;
+    tagIds?: number[];
   }) {
-    setWorkingSettingPage((prevState) => {
+    setWorkingFeat((prevState) => {
       return {
         ...prevState,
         title: title ?? prevState.title,
         text: text ?? prevState.text,
         slug: slug ?? createSlug(title) ?? prevState.slug,
+        featsTags: tagIds?.map((tagId) => ({
+          tagId: tagId,
+          featId: prevState.id ?? 0,
+        })),
       };
     });
   }
 
   async function handleSave() {
-    await saveSettingPage(workingSettingPage);
+    const result = (await saveFeat(workingFeat))[0];
+    await saveFeatsTags(
+      result.id,
+      workingFeat.featsTags?.map((featTag) => ({
+        tagId: featTag.tagId,
+        featId: featTag.featId === 0 ? result.id : featTag.featId,
+      })) ?? []
+    );
     router.push(
       buildRoute({
-        category: RoutePath.Setting,
-        subcategory: RoutePath.CustomPages,
+        category: RoutePath.Rules,
+        subcategory: RoutePath.Feats,
         admin: true,
       })
     );
@@ -65,22 +78,29 @@ const SettingPageForm = ({ settingPage }: Props) => {
       <FormSection>
         <Label>Title</Label>
         <TextInput
-          value={workingSettingPage.title}
+          value={workingFeat.title}
           onChange={(e) => handleChangeWorkingValues({ title: e.target.value })}
         />
       </FormSection>
       <FormSection>
         <Label>Slug</Label>
         <TextInput
-          value={workingSettingPage.slug}
+          value={workingFeat.slug}
           onChange={(e) => handleChangeWorkingValues({ slug: e.target.value })}
+        />
+      </FormSection>
+      <FormSection>
+        <Label>Tags</Label>
+        <TagInput
+          values={workingFeat.featsTags?.map((featTag) => featTag.tagId) ?? []}
+          onChange={(tagIds) => handleChangeWorkingValues({ tagIds })}
         />
       </FormSection>
       <FormSection>
         <Label>Text</Label>
         <Suspense>
           <MarkdownEditor
-            markdown={workingSettingPage.text ?? ''}
+            markdown={workingFeat.text ?? ''}
             onChange={(markdown) =>
               handleChangeWorkingValues({ text: markdown })
             }
@@ -92,4 +112,4 @@ const SettingPageForm = ({ settingPage }: Props) => {
   );
 };
 
-export default SettingPageForm;
+export default FeatForm;

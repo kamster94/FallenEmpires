@@ -2,12 +2,13 @@
 
 import React, { Suspense, useEffect, useState } from 'react';
 import Label from '@/components/Forms/Label';
-import Button from '@/components/Button';
-import { faSave } from '@fortawesome/free-solid-svg-icons';
 import dynamic from 'next/dynamic';
 import { NewGeneralSetting } from '@/db/models';
 import { getGeneralSetting, saveGeneralSetting } from '@/app/actions';
 import { GeneralSettingKey } from '@/enums';
+import Form from '@/components/Forms/Form';
+import FormSection from '@/components/Forms/FormSection';
+import FormFooter from '@/components/Forms/FormFooter';
 
 const MarkdownEditor = dynamic(
   () => import('@/components/Markdown/MarkdownEditor'),
@@ -46,8 +47,8 @@ const GeneralSettingsForm = () => {
   }
 
   return (
-    <form className='flex flex-col space-y-3'>
-      <div className='flex flex-col'>
+    <Form>
+      <FormSection>
         <Label>Home Page Text</Label>
         <Suspense>
           <MarkdownEditor
@@ -57,11 +58,9 @@ const GeneralSettingsForm = () => {
             }
           />
         </Suspense>
-      </div>
-      <div className='flex justify-end'>
-        <Button label='Save' icon={faSave} onClick={handleSave} />
-      </div>
-    </form>
+      </FormSection>
+      <FormFooter handleSave={handleSave} />
+    </Form>
   );
 };
 

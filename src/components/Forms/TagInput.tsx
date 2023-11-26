@@ -55,8 +55,9 @@ const TagInput = ({ values, ...props }: Props) => {
           ),
         dropdownIndicator: () => 'text-gray-600 hover:text-black',
         clearIndicator: () => 'text-gray-600 hover:text-black',
+        valueContainer: () => 'gap-2',
         multiValue: () =>
-          'bg-primary text-secondary px-2 hover:text-white space-x-2 mr-2',
+          'bg-primary text-secondary px-2 hover:text-white space-x-2',
         menu: () => 'bg-white p-1 shadow-lg ring-1 ring-black/5',
         option: () => 'p-2 hover:bg-primary hover:text-white',
         noOptionsMessage: () => 'p-2',

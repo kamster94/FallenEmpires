@@ -8,7 +8,7 @@ interface Props {
 
 const TagPill = ({ tag }: Props) => {
   const pill = (
-    <div className='bg-primary px-2 text-secondary hover:text-white'>
+    <div className='whitespace-nowrap bg-primary px-2 text-secondary hover:text-white'>
       {tag.label}
     </div>
   );

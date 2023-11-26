@@ -41,8 +41,12 @@ export type NewHeritage = InferInsertModel<typeof schema.HeritagesTable> & {
 
 export type HeritageTag = InferSelectModel<typeof schema.HeritagesTagsTable>;
 
-export type Feat = InferSelectModel<typeof schema.FeatsTable>;
-export type NewFeat = InferInsertModel<typeof schema.FeatsTable>;
+export type Feat = InferSelectModel<typeof schema.FeatsTable> & {
+  featsTags: FeatTag[];
+};
+export type NewFeat = InferInsertModel<typeof schema.FeatsTable> & {
+  featsTags?: FeatTag[];
+};
 
 export type FeatTag = InferSelectModel<typeof schema.FeatsTagsTable>;
 

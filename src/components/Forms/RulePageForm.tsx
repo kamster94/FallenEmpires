@@ -5,13 +5,14 @@ import Label from '@/components/Forms/Label';
 import TextInput from '@/components/Forms/TextInput';
 import { NewRulePage } from '@/db/models';
 import useFormHelper from '@/hooks/useFormHelper';
-import Button from '@/components/Button';
-import { faSave } from '@fortawesome/free-solid-svg-icons';
 import dynamic from 'next/dynamic';
 import { saveRulePage } from '@/app/actions';
 import { useRouter } from 'next/navigation';
 import useRoute from '@/hooks/useRoute';
 import { RoutePath } from '@/enums';
+import Form from '@/components/Forms/Form';
+import FormSection from '@/components/Forms/FormSection';
+import FormFooter from '@/components/Forms/FormFooter';
 
 const MarkdownEditor = dynamic(
   () => import('@/components/Markdown/MarkdownEditor'),
@@ -59,22 +60,22 @@ const RulePageForm = ({ rulePage }: Props) => {
   }
 
   return (
-    <form className='flex flex-col space-y-3'>
-      <div className='flex flex-col'>
+    <Form>
+      <FormSection>
         <Label>Title</Label>
         <TextInput
           value={workingRulePage.title}
           onChange={(e) => handleChangeWorkingValues({ title: e.target.value })}
         />
-      </div>
-      <div className='flex flex-col'>
+      </FormSection>
+      <FormSection>
         <Label>Slug</Label>
         <TextInput
           value={workingRulePage.slug}
           onChange={(e) => handleChangeWorkingValues({ slug: e.target.value })}
         />
-      </div>
-      <div className='flex flex-col'>
+      </FormSection>
+      <FormSection>
         <Label>Text</Label>
         <Suspense>
           <MarkdownEditor
@@ -84,11 +85,9 @@ const RulePageForm = ({ rulePage }: Props) => {
             }
           />
         </Suspense>
-      </div>
-      <div className='flex justify-end'>
-        <Button label='Save' icon={faSave} onClick={handleSave} />
-      </div>
-    </form>
+      </FormSection>
+      <FormFooter handleSave={handleSave} />
+    </Form>
   );
 };
 

@@ -1,7 +1,7 @@
 import Page from '@/components/Page';
 import PageHeader from '@/components/PageHeader';
 import Section from '@/components/Section';
-import { getAncestry, getTagsByIds } from '@/app/actions';
+import { getFeat, getTagsByIds } from '@/app/actions';
 import { notFound } from 'next/navigation';
 import TagPillsList from '@/components/TagPillsList';
 import MarkdownContent from '@/components/Markdown/MarkdownContent';
@@ -9,38 +9,38 @@ import useRoute from '@/hooks/useRoute';
 import { RoutePath } from '@/enums';
 import NavigateBack from '@/components/NavigateBack';
 
-export default async function AncestryPage({
+export default async function FeatPage({
   params,
 }: {
   params: { slug: string };
 }) {
   const { buildRoute } = useRoute();
-  const ancestry = await getAncestry(params.slug);
+  const feat = await getFeat(params.slug);
 
-  if (!ancestry) {
+  if (!feat) {
     return notFound();
   }
 
   const tags = await getTagsByIds(
-    ancestry.ancestriesTags.map((ancestryTag) => ancestryTag.tagId)
+    feat.featsTags.map((featTag) => featTag.tagId)
   );
 
   return (
     <Page>
-      <PageHeader title={ancestry.title} />
+      <PageHeader title={feat.title} />
       <Section>
         <TagPillsList
-          parentId={ancestry.id}
+          parentId={feat.id}
           tags={tags}
           className='mb-4 justify-center'
         />
-        <MarkdownContent>{ancestry.text}</MarkdownContent>
+        <MarkdownContent>{feat.text}</MarkdownContent>
         <NavigateBack
           route={buildRoute({
             category: RoutePath.Rules,
-            subcategory: RoutePath.Ancestries,
+            subcategory: RoutePath.Feats,
           })}
-          label={RoutePath.Ancestries}
+          label={RoutePath.Feats}
           type='link'
           className='mt-8 md:px-12'
         />

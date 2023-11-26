@@ -2,11 +2,12 @@ import { notFound } from 'next/navigation';
 import Section from '@/components/Section';
 import SectionHeader from '@/components/SectionHeader';
 import AncestryForm from '@/components/Forms/AncestryForm';
-import ButtonLink from '@/components/ButtonLink';
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { getAncestry } from '@/app/actions';
 import { RoutePath } from '@/enums';
 import useRoute from '@/hooks/useRoute';
+import SubSection from '@/components/SubSection';
+import NavigateBack from '@/components/NavigateBack';
+import SubSectionHeader from '@/components/SubSectionHeader';
 
 export default async function AdminAncestriesEdit({
   params,
@@ -22,19 +23,17 @@ export default async function AdminAncestriesEdit({
   return (
     <Section>
       <SectionHeader>Ancestries</SectionHeader>
-      <div className='mb-4 flex items-center space-x-2'>
-        <ButtonLink
+      <SubSection>
+        <NavigateBack
           route={buildRoute({
             category: RoutePath.Rules,
             subcategory: RoutePath.Ancestries,
             admin: true,
           })}
-          icon={faArrowLeft}
+          type='button'
         />
-        <h4 className='text-xl font-bold text-primary'>
-          Editing: {ancestry.title}
-        </h4>
-      </div>
+        <SubSectionHeader>Editing: {ancestry.title}</SubSectionHeader>
+      </SubSection>
 
       <div>
         <AncestryForm ancestry={ancestry} />

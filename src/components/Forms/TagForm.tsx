@@ -4,12 +4,13 @@ import React, { useState } from 'react';
 import Label from '@/components/Forms/Label';
 import TextInput from '@/components/Forms/TextInput';
 import { NewTag } from '@/db/models';
-import Button from '@/components/Button';
-import { faSave } from '@fortawesome/free-solid-svg-icons';
 import { saveTag } from '@/app/actions';
 import { useRouter } from 'next/navigation';
 import useRoute from '@/hooks/useRoute';
 import { RoutePath } from '@/enums';
+import Form from '@/components/Forms/Form';
+import FormSection from '@/components/Forms/FormSection';
+import FormFooter from '@/components/Forms/FormFooter';
 
 interface Props {
   tag: NewTag;
@@ -47,25 +48,23 @@ const TagForm = ({ tag }: Props) => {
   }
 
   return (
-    <form className='flex flex-col space-y-3'>
-      <div className='flex flex-col'>
+    <Form>
+      <FormSection>
         <Label>Label</Label>
         <TextInput
           value={workingTag.label}
           onChange={(e) => handleChangeWorkingValues({ label: e.target.value })}
         />
-      </div>
-      <div className='flex flex-col'>
+      </FormSection>
+      <FormSection>
         <Label>Link</Label>
         <TextInput
           value={workingTag.link ?? undefined}
           onChange={(e) => handleChangeWorkingValues({ link: e.target.value })}
         />
-      </div>
-      <div className='flex justify-end'>
-        <Button label='Save' icon={faSave} onClick={handleSave} />
-      </div>
-    </form>
+      </FormSection>
+      <FormFooter handleSave={handleSave} />
+    </Form>
   );
 };
 

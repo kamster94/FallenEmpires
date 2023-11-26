@@ -1,43 +1,42 @@
 import { notFound } from 'next/navigation';
 import Section from '@/components/Section';
 import SectionHeader from '@/components/SectionHeader';
-import SettingPageForm from '@/components/Forms/SettingPageForm';
-import { getSettingPage } from '@/app/actions';
-import useRoute from '@/hooks/useRoute';
+import FeatForm from '@/components/Forms/FeatForm';
+import { getFeat } from '@/app/actions';
 import { RoutePath } from '@/enums';
+import useRoute from '@/hooks/useRoute';
 import SubSection from '@/components/SubSection';
-import SubSectionHeader from '@/components/SubSectionHeader';
 import NavigateBack from '@/components/NavigateBack';
+import SubSectionHeader from '@/components/SubSectionHeader';
 
-export default async function AdminGeneralSettingsEdit({
+export default async function AdminFeatsEdit({
   params,
 }: {
   params: { slug: string };
 }) {
   const { buildRoute } = useRoute();
-
-  const settingPage = await getSettingPage(params.slug);
-  if (!settingPage) {
+  const feat = await getFeat(params.slug);
+  if (!feat) {
     return notFound();
   }
 
   return (
     <Section>
-      <SectionHeader>Custom Setting Pages</SectionHeader>
+      <SectionHeader>Feats</SectionHeader>
       <SubSection>
         <NavigateBack
           route={buildRoute({
-            category: RoutePath.Setting,
-            subcategory: RoutePath.CustomPages,
+            category: RoutePath.Rules,
+            subcategory: RoutePath.Feats,
             admin: true,
           })}
           type='button'
         />
-        <SubSectionHeader>Editing: {settingPage.title}</SubSectionHeader>
+        <SubSectionHeader>Editing: {feat.title}</SubSectionHeader>
       </SubSection>
 
       <div>
-        <SettingPageForm settingPage={settingPage} />
+        <FeatForm feat={feat} />
       </div>
     </Section>
   );

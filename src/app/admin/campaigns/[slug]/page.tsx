@@ -2,11 +2,12 @@ import { notFound } from 'next/navigation';
 import Section from '@/components/Section';
 import SectionHeader from '@/components/SectionHeader';
 import CampaignForm from '@/components/Forms/CampaignForm';
-import ButtonLink from '@/components/ButtonLink';
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { getCampaign } from '@/app/actions';
 import useRoute from '@/hooks/useRoute';
 import { RoutePath } from '@/enums';
+import SubSection from '@/components/SubSection';
+import SubSectionHeader from '@/components/SubSectionHeader';
+import NavigateBack from '@/components/NavigateBack';
 
 export default async function AdminCampaignsEdit({
   params,
@@ -23,15 +24,13 @@ export default async function AdminCampaignsEdit({
   return (
     <Section>
       <SectionHeader>Campaigns</SectionHeader>
-      <div className='mb-4 flex items-center space-x-2'>
-        <ButtonLink
+      <SubSection>
+        <NavigateBack
           route={buildRoute({ category: RoutePath.Campaigns, admin: true })}
-          icon={faArrowLeft}
+          type='button'
         />
-        <h4 className='text-xl font-bold text-primary'>
-          Editing: {campaign.name}
-        </h4>
-      </div>
+        <SubSectionHeader>Editing: {campaign.name}</SubSectionHeader>
+      </SubSection>
 
       <div>
         <CampaignForm campaign={campaign} />
