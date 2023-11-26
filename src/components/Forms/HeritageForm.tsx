@@ -47,10 +47,11 @@ const HeritageForm = ({ heritage }: Props) => {
         title: title ?? prevState.title,
         text: text ?? prevState.text,
         slug: slug ?? createSlug(title) ?? prevState.slug,
-        heritagesTags: tagIds?.map((tagId) => ({
-          tagId: tagId,
-          heritageId: prevState.id ?? 0,
-        })),
+        heritagesTags:
+          tagIds?.map((tagId) => ({
+            tagId: tagId,
+            heritageId: prevState.id ?? 0,
+          })) ?? prevState.heritagesTags,
       };
     });
   }

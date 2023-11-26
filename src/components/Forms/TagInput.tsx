@@ -22,6 +22,10 @@ const TagInput = ({ values, ...props }: Props) => {
       return tags.find((tag) => tag.value === id) ?? { value: 0, label: '' };
     }
 
+    console.log('ups');
+    console.log(tags);
+    console.log(values);
+
     if (!tags.length) {
       return [];
     }

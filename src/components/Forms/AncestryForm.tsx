@@ -47,10 +47,11 @@ const AncestryForm = ({ ancestry }: Props) => {
         title: title ?? prevState.title,
         text: text ?? prevState.text,
         slug: slug ?? createSlug(title) ?? prevState.slug,
-        ancestriesTags: tagIds?.map((tagId) => ({
-          tagId: tagId,
-          ancestryId: prevState.id ?? 0,
-        })),
+        ancestriesTags:
+          tagIds?.map((tagId) => ({
+            tagId: tagId,
+            ancestryId: prevState.id ?? 0,
+          })) ?? prevState.ancestriesTags,
       };
     });
   }

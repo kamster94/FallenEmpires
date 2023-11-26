@@ -47,10 +47,11 @@ const FeatForm = ({ feat }: Props) => {
         title: title ?? prevState.title,
         text: text ?? prevState.text,
         slug: slug ?? createSlug(title) ?? prevState.slug,
-        featsTags: tagIds?.map((tagId) => ({
-          tagId: tagId,
-          featId: prevState.id ?? 0,
-        })),
+        featsTags:
+          tagIds?.map((tagId) => ({
+            tagId: tagId,
+            featId: prevState.id ?? 0,
+          })) ?? prevState.featsTags,
       };
     });
   }
