@@ -34,7 +34,7 @@ export default async function HeritagePage({
           tags={tags}
           className='mb-4 justify-center'
         />
-        <MarkdownContent>{heritage.text}</MarkdownContent>
+        <MarkdownContent className='md:px-12'>{heritage.text}</MarkdownContent>
         <NavigateBack
           route={buildRoute({
             category: RoutePath.Rules,

@@ -34,7 +34,7 @@ export default async function AncestryPage({
           tags={tags}
           className='mb-4 justify-center'
         />
-        <MarkdownContent>{ancestry.text}</MarkdownContent>
+        <MarkdownContent className='md:px-12'>{ancestry.text}</MarkdownContent>
         <NavigateBack
           route={buildRoute({
             category: RoutePath.Rules,

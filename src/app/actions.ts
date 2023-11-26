@@ -15,6 +15,7 @@ import {
   NewFeat,
   NewGeneralSetting,
   NewHeritage,
+  NewPost,
   NewRulePage,
   NewSettingPage,
   NewTag,
@@ -31,6 +32,7 @@ import {
   GeneralSettingsTable,
   HeritagesTable,
   HeritagesTagsTable,
+  PostsTable,
   RulePagesTable,
   SettingPagesTable,
   TagsTable,
@@ -339,5 +341,36 @@ export async function saveFeatsTags(featId: number, featsTags: FeatTag[]) {
   if (featsTags.length) {
     await db.insert(FeatsTagsTable).values([...featsTags]);
   }
+  revalidatePath('/');
+}
+
+export async function getAllPosts() {
+  return db.query.PostsTable.findMany();
+}
+
+export async function getPost(slug: string) {
+  return db.query.PostsTable.findFirst({
+    where: eq(PostsTable.slug, slug),
+  });
+}
+
+export async function savePost(post: NewPost) {
+  if (post.id) {
+    const updated = await db
+      .update(PostsTable)
+      .set({ title: post.title, slug: post.slug, text: post.text })
+      .where(eq(PostsTable.id, post.id))
+      .returning();
+    revalidatePath('/');
+    return updated;
+  } else {
+    const inserted = await db.insert(PostsTable).values(post).returning();
+    revalidatePath('/');
+    return inserted;
+  }
+}
+
+export async function deletePost(id: number) {
+  await db.delete(PostsTable).where(eq(PostsTable.id, id));
   revalidatePath('/');
 }

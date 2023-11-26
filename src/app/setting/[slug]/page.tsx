@@ -17,7 +17,7 @@ export default async function CustomSettingPage({
   return (
     <Page>
       <PageHeader title={settingPage.title} />
-      <MarkdownContent>{settingPage.text}</MarkdownContent>
+      <MarkdownContent className='md:px-12'>{settingPage.text}</MarkdownContent>
     </Page>
   );
 }
