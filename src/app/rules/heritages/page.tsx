@@ -6,7 +6,7 @@ import Section from '@/components/Section';
 export default function Heritages() {
   return (
     <Page>
-      <PageHeader title='Heritages' />
+      <PageHeader>Heritages</PageHeader>
       <Section className='md:px-12'>
         <HeritagesViewTable />
       </Section>

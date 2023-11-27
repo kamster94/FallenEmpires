@@ -16,7 +16,7 @@ export default async function CampaignPage({
 
   return (
     <Page>
-      <PageHeader title={campaign.name} />
+      <PageHeader>{campaign.name}</PageHeader>
       <MarkdownContent className='md:px-12'>{campaign.text}</MarkdownContent>
     </Page>
   );

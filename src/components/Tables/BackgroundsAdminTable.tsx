@@ -15,7 +15,7 @@ const BackgroundsAdminTable = () => {
   async function refresh() {
     setBackgrounds(await getAllBackgrounds());
   }
-  const headers = ['Title', 'Slug'];
+  const headers = ['Name', 'Slug'];
 
   useEffect(() => {
     getAllBackgrounds().then((loadedBackgrounds) => {
@@ -30,7 +30,7 @@ const BackgroundsAdminTable = () => {
 
   const rows: Row[] = backgrounds.map((background) => {
     return {
-      cells: [background.title, background.slug],
+      cells: [background.name, background.slug],
       actions: (
         <TableActions
           editRoute={buildRoute({

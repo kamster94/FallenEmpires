@@ -9,14 +9,16 @@ import MarkdownContent from '@/components/Markdown/MarkdownContent';
 const LanguagesViewTable = async () => {
   const { buildRoute } = useRoute();
   const languages = await getAllLanguages();
-  const headers = ['Title', 'Text'];
+  const headers = ['Name', 'Description'];
 
   const rows: Row[] = await Promise.all(
     languages.map(async (language) => {
       return {
         cells: [
-          language.title,
-          <MarkdownContent key={language.id}>{language.text}</MarkdownContent>,
+          language.name,
+          <MarkdownContent key={language.id}>
+            {language.description}
+          </MarkdownContent>,
         ],
         actions: (
           <TableActions

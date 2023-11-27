@@ -15,7 +15,7 @@ const HeritagesAdminTable = () => {
   async function refresh() {
     setHeritages(await getAllHeritages());
   }
-  const headers = ['Title', 'Slug'];
+  const headers = ['Name', 'Slug'];
 
   useEffect(() => {
     getAllHeritages().then((loadedHeritages) => {
@@ -30,7 +30,7 @@ const HeritagesAdminTable = () => {
 
   const rows: Row[] = heritages.map((heritage) => {
     return {
-      cells: [heritage.title, heritage.slug],
+      cells: [heritage.name, heritage.slug],
       actions: (
         <TableActions
           editRoute={buildRoute({

@@ -31,22 +31,22 @@ const FeatForm = ({ feat }: Props) => {
   const { buildRoute } = useRoute();
 
   function handleChangeWorkingValues({
-    title,
-    text,
+    name,
+    description,
     slug,
     tagIds,
   }: {
-    title?: string;
-    text?: string;
+    name?: string;
+    description?: string;
     slug?: string;
     tagIds?: number[];
   }) {
     setWorkingFeat((prevState) => {
       return {
         ...prevState,
-        title: title ?? prevState.title,
-        text: text ?? prevState.text,
-        slug: slug ?? createSlug(title) ?? prevState.slug,
+        name: name ?? prevState.name,
+        description: description ?? prevState.description,
+        slug: slug ?? createSlug(name) ?? prevState.slug,
         featsTags:
           tagIds?.map((tagId) => ({
             tagId: tagId,
@@ -77,10 +77,10 @@ const FeatForm = ({ feat }: Props) => {
   return (
     <Form>
       <FormSection>
-        <Label>Title</Label>
+        <Label>Name</Label>
         <TextInput
-          value={workingFeat.title}
-          onChange={(e) => handleChangeWorkingValues({ title: e.target.value })}
+          value={workingFeat.name}
+          onChange={(e) => handleChangeWorkingValues({ name: e.target.value })}
         />
       </FormSection>
       <FormSection>
@@ -98,12 +98,12 @@ const FeatForm = ({ feat }: Props) => {
         />
       </FormSection>
       <FormSection>
-        <Label>Text</Label>
+        <Label>Description</Label>
         <Suspense>
           <MarkdownEditor
-            markdown={workingFeat.text ?? ''}
+            markdown={workingFeat.description ?? ''}
             onChange={(markdown) =>
-              handleChangeWorkingValues({ text: markdown })
+              handleChangeWorkingValues({ description: markdown })
             }
           />
         </Suspense>

@@ -9,7 +9,7 @@ import { RoutePath } from '@/enums';
 const HeritagesViewTable = async () => {
   const { buildRoute } = useRoute();
   const heritages = await getAllHeritages();
-  const headers = ['Title', 'Tags'];
+  const headers = ['Name', 'Tags'];
 
   const rows: Row[] = await Promise.all(
     heritages.map(async (heritage) => {
@@ -18,7 +18,7 @@ const HeritagesViewTable = async () => {
       );
       return {
         cells: [
-          heritage.title,
+          heritage.name,
           <TagPillsList key={heritage.id} parentId={heritage.id} tags={tags} />,
         ],
         actions: (

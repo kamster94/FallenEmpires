@@ -22,10 +22,10 @@ export default async function BackgroundPage({
 
   return (
     <Page>
-      <PageHeader title={background.title} />
+      <PageHeader>{background.name}</PageHeader>
       <Section>
         <MarkdownContent className='md:px-12'>
-          {background.text}
+          {background.description}
         </MarkdownContent>
         <NavigateBack
           route={buildRoute({

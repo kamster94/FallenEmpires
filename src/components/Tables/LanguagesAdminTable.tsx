@@ -15,7 +15,7 @@ const LanguagesAdminTable = () => {
   async function refresh() {
     setLanguages(await getAllLanguages());
   }
-  const headers = ['Title', 'Slug'];
+  const headers = ['Name', 'Slug'];
 
   useEffect(() => {
     getAllLanguages().then((loadedLanguages) => {
@@ -30,7 +30,7 @@ const LanguagesAdminTable = () => {
 
   const rows: Row[] = languages.map((language) => {
     return {
-      cells: [language.title, language.slug],
+      cells: [language.name, language.slug],
       actions: (
         <TableActions
           editRoute={buildRoute({

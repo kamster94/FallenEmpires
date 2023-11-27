@@ -27,14 +27,16 @@ export default async function HeritagePage({
 
   return (
     <Page>
-      <PageHeader title={heritage.title} />
+      <PageHeader>{heritage.name}</PageHeader>
       <Section>
         <TagPillsList
           parentId={heritage.id}
           tags={tags}
           className='mb-4 justify-center'
         />
-        <MarkdownContent className='md:px-12'>{heritage.text}</MarkdownContent>
+        <MarkdownContent className='md:px-12'>
+          {heritage.description}
+        </MarkdownContent>
         <NavigateBack
           route={buildRoute({
             category: RoutePath.Rules,

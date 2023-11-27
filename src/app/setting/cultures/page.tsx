@@ -4,7 +4,7 @@ import PageHeader from '@/components/PageHeader';
 export default function Cultures() {
   return (
     <Page>
-      <PageHeader title='Cultures' />
+      <PageHeader>Cultures</PageHeader>
     </Page>
   );
 }

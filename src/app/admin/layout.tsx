@@ -6,7 +6,7 @@ import AdminNavigation from '@/components/Navigation/AdminNavigation';
 export default function AdminLayout({ children }: { children: ReactNode }) {
   return (
     <Page>
-      <PageHeader title='Admin Panel' />
+      <PageHeader>Admin Panel</PageHeader>
       <div className='container flex w-full flex-col px-4 md:flex-row md:px-12'>
         <div className='flex basis-1/5 flex-col md:max-w-[20%]'>
           <AdminNavigation />

@@ -8,7 +8,7 @@ export default async function Blog() {
 
   return (
     <Page>
-      <PageHeader title='Blog' />
+      <PageHeader>Blog</PageHeader>
       {posts.map((post) => (
         <BlogPost key={post.id} post={post} />
       ))}

@@ -15,7 +15,7 @@ const AncestriesAdminTable = () => {
   async function refresh() {
     setAncestries(await getAllAncestries());
   }
-  const headers = ['Title', 'Slug'];
+  const headers = ['Name', 'Slug'];
 
   useEffect(() => {
     getAllAncestries().then((loadedAncestries) => {
@@ -30,7 +30,7 @@ const AncestriesAdminTable = () => {
 
   const rows: Row[] = ancestries.map((ancestry) => {
     return {
-      cells: [ancestry.title, ancestry.slug],
+      cells: [ancestry.name, ancestry.slug],
       actions: (
         <TableActions
           editRoute={buildRoute({

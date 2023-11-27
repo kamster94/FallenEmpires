@@ -6,7 +6,7 @@ import Section from '@/components/Section';
 export default function Feats() {
   return (
     <Page>
-      <PageHeader title='Feats' />
+      <PageHeader>Feats</PageHeader>
       <Section className='md:px-12'>
         <FeatsViewTable />
       </Section>

@@ -27,14 +27,16 @@ export default async function FeatPage({
 
   return (
     <Page>
-      <PageHeader title={feat.title} />
+      <PageHeader>{feat.name}</PageHeader>
       <Section>
         <TagPillsList
           parentId={feat.id}
           tags={tags}
           className='mb-4 justify-center'
         />
-        <MarkdownContent className='md:px-12'>{feat.text}</MarkdownContent>
+        <MarkdownContent className='md:px-12'>
+          {feat.description}
+        </MarkdownContent>
         <NavigateBack
           route={buildRoute({
             category: RoutePath.Rules,

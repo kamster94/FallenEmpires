@@ -9,7 +9,7 @@ import { RoutePath } from '@/enums';
 const FeatsViewTable = async () => {
   const { buildRoute } = useRoute();
   const feats = await getAllFeats();
-  const headers = ['Title', 'Tags'];
+  const headers = ['Name', 'Tags'];
 
   const rows: Row[] = await Promise.all(
     feats.map(async (feat) => {
@@ -18,7 +18,7 @@ const FeatsViewTable = async () => {
       );
       return {
         cells: [
-          feat.title,
+          feat.name,
           <TagPillsList key={feat.id} parentId={feat.id} tags={tags} />,
         ],
         actions: (

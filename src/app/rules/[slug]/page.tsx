@@ -16,7 +16,7 @@ export default async function CustomRulePage({
 
   return (
     <Page>
-      <PageHeader title={rulePage.title} />
+      <PageHeader>{rulePage.title}</PageHeader>
       <MarkdownContent className='md:px-12'>{rulePage.text}</MarkdownContent>
     </Page>
   );

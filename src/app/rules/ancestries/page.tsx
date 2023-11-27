@@ -6,7 +6,7 @@ import Section from '@/components/Section';
 export default function Ancestries() {
   return (
     <Page>
-      <PageHeader title='Ancestries' />
+      <PageHeader>Ancestries</PageHeader>
       <Section className='md:px-12'>
         <AncestriesViewTable />
       </Section>

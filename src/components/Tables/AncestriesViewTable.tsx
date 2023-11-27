@@ -9,7 +9,7 @@ import { RoutePath } from '@/enums';
 const AncestriesViewTable = async () => {
   const { buildRoute } = useRoute();
   const ancestries = await getAllAncestries();
-  const headers = ['Title', 'Tags'];
+  const headers = ['Name', 'Tags'];
 
   const rows: Row[] = await Promise.all(
     ancestries.map(async (ancestry) => {
@@ -18,7 +18,7 @@ const AncestriesViewTable = async () => {
       );
       return {
         cells: [
-          ancestry.title,
+          ancestry.name,
           <TagPillsList key={ancestry.id} parentId={ancestry.id} tags={tags} />,
         ],
         actions: (

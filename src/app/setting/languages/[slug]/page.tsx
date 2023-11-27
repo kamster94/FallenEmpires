@@ -22,9 +22,11 @@ export default async function LanguagePage({
 
   return (
     <Page>
-      <PageHeader title={language.title} />
+      <PageHeader>{language.name}</PageHeader>
       <Section>
-        <MarkdownContent className='md:px-12'>{language.text}</MarkdownContent>
+        <MarkdownContent className='md:px-12'>
+          {language.description}
+        </MarkdownContent>
         <NavigateBack
           route={buildRoute({
             category: RoutePath.Setting,

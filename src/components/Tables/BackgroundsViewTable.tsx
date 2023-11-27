@@ -9,15 +9,15 @@ import MarkdownContent from '@/components/Markdown/MarkdownContent';
 const BackgroundsViewTable = async () => {
   const { buildRoute } = useRoute();
   const backgrounds = await getAllBackgrounds();
-  const headers = ['Title', 'Text'];
+  const headers = ['Name', 'Description'];
 
   const rows: Row[] = await Promise.all(
     backgrounds.map(async (background) => {
       return {
         cells: [
-          background.title,
+          background.name,
           <MarkdownContent key={background.id}>
-            {background.text}
+            {background.description}
           </MarkdownContent>,
         ],
         actions: (

@@ -31,22 +31,22 @@ const HeritageForm = ({ heritage }: Props) => {
   const { buildRoute } = useRoute();
 
   function handleChangeWorkingValues({
-    title,
-    text,
+    name,
+    description,
     slug,
     tagIds,
   }: {
-    title?: string;
-    text?: string;
+    name?: string;
+    description?: string;
     slug?: string;
     tagIds?: number[];
   }) {
     setWorkingHeritage((prevState) => {
       return {
         ...prevState,
-        title: title ?? prevState.title,
-        text: text ?? prevState.text,
-        slug: slug ?? createSlug(title) ?? prevState.slug,
+        name: name ?? prevState.name,
+        description: description ?? prevState.description,
+        slug: slug ?? createSlug(name) ?? prevState.slug,
         heritagesTags:
           tagIds?.map((tagId) => ({
             tagId: tagId,
@@ -78,10 +78,10 @@ const HeritageForm = ({ heritage }: Props) => {
   return (
     <Form>
       <FormSection>
-        <Label>Title</Label>
+        <Label>Name</Label>
         <TextInput
-          value={workingHeritage.title}
-          onChange={(e) => handleChangeWorkingValues({ title: e.target.value })}
+          value={workingHeritage.name}
+          onChange={(e) => handleChangeWorkingValues({ name: e.target.value })}
         />
       </FormSection>
       <FormSection>
@@ -103,12 +103,12 @@ const HeritageForm = ({ heritage }: Props) => {
         />
       </FormSection>
       <FormSection>
-        <Label>Text</Label>
+        <Label>Description</Label>
         <Suspense>
           <MarkdownEditor
-            markdown={workingHeritage.text ?? ''}
+            markdown={workingHeritage.description ?? ''}
             onChange={(markdown) =>
-              handleChangeWorkingValues({ text: markdown })
+              handleChangeWorkingValues({ description: markdown })
             }
           />
         </Suspense>

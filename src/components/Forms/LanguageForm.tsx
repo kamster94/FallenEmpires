@@ -30,20 +30,20 @@ const LanguageForm = ({ language }: Props) => {
   const { buildRoute } = useRoute();
 
   function handleChangeWorkingValues({
-    title,
-    text,
+    name,
+    description,
     slug,
   }: {
-    title?: string;
-    text?: string;
+    name?: string;
+    description?: string;
     slug?: string;
   }) {
     setWorkingLanguage((prevState) => {
       return {
         ...prevState,
-        title: title ?? prevState.title,
-        text: text ?? prevState.text,
-        slug: slug ?? createSlug(title) ?? prevState.slug,
+        name: name ?? prevState.name,
+        description: description ?? prevState.description,
+        slug: slug ?? createSlug(name) ?? prevState.slug,
       };
     });
   }
@@ -62,10 +62,10 @@ const LanguageForm = ({ language }: Props) => {
   return (
     <Form>
       <FormSection>
-        <Label>Title</Label>
+        <Label>Name</Label>
         <TextInput
-          value={workingLanguage.title}
-          onChange={(e) => handleChangeWorkingValues({ title: e.target.value })}
+          value={workingLanguage.name}
+          onChange={(e) => handleChangeWorkingValues({ name: e.target.value })}
         />
       </FormSection>
       <FormSection>
@@ -76,12 +76,12 @@ const LanguageForm = ({ language }: Props) => {
         />
       </FormSection>
       <FormSection>
-        <Label>Text</Label>
+        <Label>Description</Label>
         <Suspense>
           <MarkdownEditor
-            markdown={workingLanguage.text ?? ''}
+            markdown={workingLanguage.description ?? ''}
             onChange={(markdown) =>
-              handleChangeWorkingValues({ text: markdown })
+              handleChangeWorkingValues({ description: markdown })
             }
           />
         </Suspense>

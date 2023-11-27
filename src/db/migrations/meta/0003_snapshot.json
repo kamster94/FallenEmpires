@@ -1,0 +1,652 @@
+{
+  "id": "18ac6181-659a-4d1f-b47f-c64ce8fda5fe",
+  "prevId": "eba5090b-aaf5-4743-858a-f49129ceebfb",
+  "version": "5",
+  "dialect": "pg",
+  "tables": {
+    "Ancestries": {
+      "name": "Ancestries",
+      "schema": "",
+      "columns": {
+        "Id": {
+          "name": "Id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "Name": {
+          "name": "Name",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "Slug": {
+          "name": "Slug",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "Description": {
+          "name": "Description",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "Ancestries_Slug_unique": {
+          "name": "Ancestries_Slug_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "Slug"
+          ]
+        }
+      }
+    },
+    "AncestriesTags": {
+      "name": "AncestriesTags",
+      "schema": "",
+      "columns": {
+        "AncestryId": {
+          "name": "AncestryId",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "TagId": {
+          "name": "TagId",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "AncestriesTags_AncestryId_Ancestries_Id_fk": {
+          "name": "AncestriesTags_AncestryId_Ancestries_Id_fk",
+          "tableFrom": "AncestriesTags",
+          "tableTo": "Ancestries",
+          "columnsFrom": [
+            "AncestryId"
+          ],
+          "columnsTo": [
+            "Id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "AncestriesTags_TagId_Tags_Id_fk": {
+          "name": "AncestriesTags_TagId_Tags_Id_fk",
+          "tableFrom": "AncestriesTags",
+          "tableTo": "Tags",
+          "columnsFrom": [
+            "TagId"
+          ],
+          "columnsTo": [
+            "Id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "AncestriesTags_AncestryId_TagId": {
+          "name": "AncestriesTags_AncestryId_TagId",
+          "columns": [
+            "AncestryId",
+            "TagId"
+          ]
+        }
+      },
+      "uniqueConstraints": {}
+    },
+    "Backgrounds": {
+      "name": "Backgrounds",
+      "schema": "",
+      "columns": {
+        "Id": {
+          "name": "Id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "Name": {
+          "name": "Name",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "Slug": {
+          "name": "Slug",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "Description": {
+          "name": "Description",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "Backgrounds_Slug_unique": {
+          "name": "Backgrounds_Slug_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "Slug"
+          ]
+        }
+      }
+    },
+    "Campaigns": {
+      "name": "Campaigns",
+      "schema": "",
+      "columns": {
+        "Id": {
+          "name": "Id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "Name": {
+          "name": "Name",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "Slug": {
+          "name": "Slug",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "Text": {
+          "name": "Text",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {
+        "Campaigns_unique_idx": {
+          "name": "Campaigns_unique_idx",
+          "columns": [
+            "Slug"
+          ],
+          "isUnique": true
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "Feats": {
+      "name": "Feats",
+      "schema": "",
+      "columns": {
+        "Id": {
+          "name": "Id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "Name": {
+          "name": "Name",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "Slug": {
+          "name": "Slug",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "Description": {
+          "name": "Description",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "Feats_Slug_unique": {
+          "name": "Feats_Slug_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "Slug"
+          ]
+        }
+      }
+    },
+    "FeatsTags": {
+      "name": "FeatsTags",
+      "schema": "",
+      "columns": {
+        "FeatId": {
+          "name": "FeatId",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "TagId": {
+          "name": "TagId",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "FeatsTags_FeatId_Feats_Id_fk": {
+          "name": "FeatsTags_FeatId_Feats_Id_fk",
+          "tableFrom": "FeatsTags",
+          "tableTo": "Feats",
+          "columnsFrom": [
+            "FeatId"
+          ],
+          "columnsTo": [
+            "Id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "FeatsTags_TagId_Tags_Id_fk": {
+          "name": "FeatsTags_TagId_Tags_Id_fk",
+          "tableFrom": "FeatsTags",
+          "tableTo": "Tags",
+          "columnsFrom": [
+            "TagId"
+          ],
+          "columnsTo": [
+            "Id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "FeatsTags_FeatId_TagId": {
+          "name": "FeatsTags_FeatId_TagId",
+          "columns": [
+            "FeatId",
+            "TagId"
+          ]
+        }
+      },
+      "uniqueConstraints": {}
+    },
+    "GeneralSettings": {
+      "name": "GeneralSettings",
+      "schema": "",
+      "columns": {
+        "Id": {
+          "name": "Id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "Key": {
+          "name": "Key",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "Value": {
+          "name": "Value",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "GeneralSettings_Key_unique": {
+          "name": "GeneralSettings_Key_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "Key"
+          ]
+        }
+      }
+    },
+    "Heritages": {
+      "name": "Heritages",
+      "schema": "",
+      "columns": {
+        "Id": {
+          "name": "Id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "Name": {
+          "name": "Name",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "Slug": {
+          "name": "Slug",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "Description": {
+          "name": "Description",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "Heritages_Slug_unique": {
+          "name": "Heritages_Slug_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "Slug"
+          ]
+        }
+      }
+    },
+    "HeritagesTags": {
+      "name": "HeritagesTags",
+      "schema": "",
+      "columns": {
+        "HeritageId": {
+          "name": "HeritageId",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "TagId": {
+          "name": "TagId",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "HeritagesTags_HeritageId_Heritages_Id_fk": {
+          "name": "HeritagesTags_HeritageId_Heritages_Id_fk",
+          "tableFrom": "HeritagesTags",
+          "tableTo": "Heritages",
+          "columnsFrom": [
+            "HeritageId"
+          ],
+          "columnsTo": [
+            "Id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "HeritagesTags_TagId_Tags_Id_fk": {
+          "name": "HeritagesTags_TagId_Tags_Id_fk",
+          "tableFrom": "HeritagesTags",
+          "tableTo": "Tags",
+          "columnsFrom": [
+            "TagId"
+          ],
+          "columnsTo": [
+            "Id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "HeritagesTags_HeritageId_TagId": {
+          "name": "HeritagesTags_HeritageId_TagId",
+          "columns": [
+            "HeritageId",
+            "TagId"
+          ]
+        }
+      },
+      "uniqueConstraints": {}
+    },
+    "Languages": {
+      "name": "Languages",
+      "schema": "",
+      "columns": {
+        "Id": {
+          "name": "Id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "Name": {
+          "name": "Name",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "Slug": {
+          "name": "Slug",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "Description": {
+          "name": "Description",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "Languages_Slug_unique": {
+          "name": "Languages_Slug_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "Slug"
+          ]
+        }
+      }
+    },
+    "Posts": {
+      "name": "Posts",
+      "schema": "",
+      "columns": {
+        "Id": {
+          "name": "Id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "Title": {
+          "name": "Title",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "Slug": {
+          "name": "Slug",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "Author": {
+          "name": "Author",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "Date": {
+          "name": "Date",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "Text": {
+          "name": "Text",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "Posts_Slug_unique": {
+          "name": "Posts_Slug_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "Slug"
+          ]
+        }
+      }
+    },
+    "RulePages": {
+      "name": "RulePages",
+      "schema": "",
+      "columns": {
+        "Id": {
+          "name": "Id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "Title": {
+          "name": "Title",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "Slug": {
+          "name": "Slug",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "Text": {
+          "name": "Text",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "RulePages_Slug_unique": {
+          "name": "RulePages_Slug_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "Slug"
+          ]
+        }
+      }
+    },
+    "SettingPages": {
+      "name": "SettingPages",
+      "schema": "",
+      "columns": {
+        "Id": {
+          "name": "Id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "Title": {
+          "name": "Title",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "Slug": {
+          "name": "Slug",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "Text": {
+          "name": "Text",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "SettingPages_Slug_unique": {
+          "name": "SettingPages_Slug_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "Slug"
+          ]
+        }
+      }
+    },
+    "Tags": {
+      "name": "Tags",
+      "schema": "",
+      "columns": {
+        "Id": {
+          "name": "Id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "Label": {
+          "name": "Label",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "Link": {
+          "name": "Link",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    }
+  },
+  "enums": {},
+  "schemas": {},
+  "_meta": {
+    "schemas": {},
+    "tables": {},
+    "columns": {
+      "\"Ancestries\".\"Title\"": "\"Ancestries\".\"Name\"",
+      "\"Ancestries\".\"Text\"": "\"Ancestries\".\"Description\"",
+      "\"Backgrounds\".\"Title\"": "\"Backgrounds\".\"Name\"",
+      "\"Backgrounds\".\"Text\"": "\"Backgrounds\".\"Description\"",
+      "\"Feats\".\"Title\"": "\"Feats\".\"Name\"",
+      "\"Feats\".\"Text\"": "\"Feats\".\"Description\"",
+      "\"Heritages\".\"Title\"": "\"Heritages\".\"Name\"",
+      "\"Heritages\".\"Text\"": "\"Heritages\".\"Description\"",
+      "\"Languages\".\"Title\"": "\"Languages\".\"Name\"",
+      "\"Languages\".\"Text\"": "\"Languages\".\"Description\""
+    }
+  }
+}

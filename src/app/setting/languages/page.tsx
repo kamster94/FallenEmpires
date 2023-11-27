@@ -6,7 +6,7 @@ import Section from '@/components/Section';
 export default function Languages() {
   return (
     <Page>
-      <PageHeader title='Languages' />
+      <PageHeader>Languages</PageHeader>
       <Section className='md:px-12'>
         <LanguagesViewTable />
       </Section>

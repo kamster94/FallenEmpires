@@ -6,7 +6,7 @@ import Section from '@/components/Section';
 export default function Backgrounds() {
   return (
     <Page>
-      <PageHeader title='Backgrounds' />
+      <PageHeader>Backgrounds</PageHeader>
       <Section className='md:px-12'>
         <BackgroundsViewTable />
       </Section>

@@ -56,9 +56,9 @@ export const TagsTable = pgTable('Tags', {
 
 export const AncestriesTable = pgTable('Ancestries', {
   id: serial('Id').primaryKey(),
-  title: varchar('Title', { length: 255 }).notNull(),
+  name: varchar('Name', { length: 255 }).notNull(),
   slug: varchar('Slug', { length: 255 }).unique().notNull(),
-  text: text('Text'),
+  description: text('Description'),
 });
 
 export const AncestriesTagsTable = pgTable(
@@ -100,9 +100,9 @@ export const AncestriesToTagsRelations = relations(
 
 export const HeritagesTable = pgTable('Heritages', {
   id: serial('Id').primaryKey(),
-  title: varchar('Title', { length: 255 }).notNull(),
+  name: varchar('Name', { length: 255 }).notNull(),
   slug: varchar('Slug', { length: 255 }).unique().notNull(),
-  text: text('Text'),
+  description: text('Description'),
 });
 
 export const HeritagesTagsTable = pgTable(
@@ -144,9 +144,9 @@ export const HeritagesToTagsRelations = relations(
 
 export const FeatsTable = pgTable('Feats', {
   id: serial('Id').primaryKey(),
-  title: varchar('Title', { length: 255 }).notNull(),
+  name: varchar('Name', { length: 255 }).notNull(),
   slug: varchar('Slug', { length: 255 }).unique().notNull(),
-  text: text('Text'),
+  description: text('Description'),
 });
 
 export const FeatsTagsTable = pgTable(
@@ -189,14 +189,14 @@ export const GeneralSettingsTable = pgTable('GeneralSettings', {
 
 export const BackgroundsTable = pgTable('Backgrounds', {
   id: serial('Id').primaryKey(),
-  title: varchar('Title', { length: 255 }).notNull(),
+  name: varchar('Name', { length: 255 }).notNull(),
   slug: varchar('Slug', { length: 255 }).unique().notNull(),
-  text: text('Text'),
+  description: text('Description'),
 });
 
 export const LanguagesTable = pgTable('Languages', {
   id: serial('Id').primaryKey(),
-  title: varchar('Title', { length: 255 }).notNull(),
+  name: varchar('Name', { length: 255 }).notNull(),
   slug: varchar('Slug', { length: 255 }).unique().notNull(),
-  text: text('Text'),
+  description: text('Description'),
 });

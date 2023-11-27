@@ -15,7 +15,7 @@ const FeatsAdminTable = () => {
   async function refresh() {
     setFeats(await getAllFeats());
   }
-  const headers = ['Title', 'Slug'];
+  const headers = ['Name', 'Slug'];
 
   useEffect(() => {
     getAllFeats().then((loadedFeats) => {
@@ -30,7 +30,7 @@ const FeatsAdminTable = () => {
 
   const rows: Row[] = feats.map((feat) => {
     return {
-      cells: [feat.title, feat.slug],
+      cells: [feat.name, feat.slug],
       actions: (
         <TableActions
           editRoute={buildRoute({

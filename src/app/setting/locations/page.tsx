@@ -4,7 +4,7 @@ import PageHeader from '@/components/PageHeader';
 export default function Locations() {
   return (
     <Page>
-      <PageHeader title='Locations' />
+      <PageHeader>Locations</PageHeader>
     </Page>
   );
 }
