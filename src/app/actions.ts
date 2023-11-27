@@ -208,7 +208,11 @@ export async function saveAncestry(ancestry: NewAncestry) {
   if (ancestry.id) {
     const updated = await db
       .update(AncestriesTable)
-      .set({ title: ancestry.title, slug: ancestry.slug, text: ancestry.text })
+      .set({
+        name: ancestry.name,
+        slug: ancestry.slug,
+        description: ancestry.description,
+      })
       .where(eq(AncestriesTable.id, ancestry.id))
       .returning();
     revalidatePath('/');
@@ -265,7 +269,11 @@ export async function saveHeritage(heritage: NewHeritage) {
   if (heritage.id) {
     const updated = await db
       .update(HeritagesTable)
-      .set({ title: heritage.title, slug: heritage.slug, text: heritage.text })
+      .set({
+        name: heritage.name,
+        slug: heritage.slug,
+        description: heritage.description,
+      })
       .where(eq(HeritagesTable.id, heritage.id))
       .returning();
     revalidatePath('/');
@@ -322,7 +330,7 @@ export async function saveFeat(feat: NewFeat) {
   if (feat.id) {
     const updated = await db
       .update(FeatsTable)
-      .set({ title: feat.title, slug: feat.slug, text: feat.text })
+      .set({ name: feat.name, slug: feat.slug, description: feat.description })
       .where(eq(FeatsTable.id, feat.id))
       .returning();
     revalidatePath('/');
@@ -394,9 +402,9 @@ export async function saveBackground(background: NewBackground) {
     const updated = await db
       .update(BackgroundsTable)
       .set({
-        title: background.title,
+        name: background.name,
         slug: background.slug,
-        text: background.text,
+        description: background.description,
       })
       .where(eq(BackgroundsTable.id, background.id))
       .returning();
@@ -432,9 +440,9 @@ export async function saveLanguage(language: NewLanguage) {
     const updated = await db
       .update(LanguagesTable)
       .set({
-        title: language.title,
+        name: language.name,
         slug: language.slug,
-        text: language.text,
+        description: language.description,
       })
       .where(eq(LanguagesTable.id, language.id))
       .returning();
