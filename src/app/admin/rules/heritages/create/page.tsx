@@ -24,7 +24,7 @@ export default function AdminCreateHeritage() {
         <SubSectionHeader>Create New</SubSectionHeader>
       </SubSection>
       <div>
-        <HeritageForm heritage={{ title: '', text: '', slug: '' }} />
+        <HeritageForm heritage={{ name: '', description: '', slug: '' }} />
       </div>
     </Section>
   );

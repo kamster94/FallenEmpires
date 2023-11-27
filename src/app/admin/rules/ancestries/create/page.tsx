@@ -24,7 +24,7 @@ export default function AdminCreateAncestry() {
         <SubSectionHeader>Create New</SubSectionHeader>
       </SubSection>
       <div>
-        <AncestryForm ancestry={{ title: '', text: '', slug: '' }} />
+        <AncestryForm ancestry={{ name: '', description: '', slug: '' }} />
       </div>
     </Section>
   );

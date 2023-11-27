@@ -32,7 +32,7 @@ export default async function AdminHeritagesEdit({
           })}
           type='button'
         />
-        <SubSectionHeader>Editing: {heritage.title}</SubSectionHeader>
+        <SubSectionHeader>Editing: {heritage.name}</SubSectionHeader>
       </SubSection>
 
       <div>

@@ -32,7 +32,7 @@ export default async function AdminAncestriesEdit({
           })}
           type='button'
         />
-        <SubSectionHeader>Editing: {ancestry.title}</SubSectionHeader>
+        <SubSectionHeader>Editing: {ancestry.name}</SubSectionHeader>
       </SubSection>
 
       <div>

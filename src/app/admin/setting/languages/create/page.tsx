@@ -24,7 +24,7 @@ export default function AdminCreateLanguage() {
         <SubSectionHeader>Create New</SubSectionHeader>
       </SubSection>
       <div>
-        <LanguageForm language={{ title: '', text: '', slug: '' }} />
+        <LanguageForm language={{ name: '', description: '', slug: '' }} />
       </div>
     </Section>
   );

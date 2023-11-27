@@ -24,7 +24,7 @@ export default function AdminCreateBackground() {
         <SubSectionHeader>Create New</SubSectionHeader>
       </SubSection>
       <div>
-        <BackgroundForm background={{ title: '', text: '', slug: '' }} />
+        <BackgroundForm background={{ name: '', description: '', slug: '' }} />
       </div>
     </Section>
   );

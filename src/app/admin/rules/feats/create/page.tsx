@@ -24,7 +24,7 @@ export default function AdminCreateFeat() {
         <SubSectionHeader>Create New</SubSectionHeader>
       </SubSection>
       <div>
-        <FeatForm feat={{ title: '', text: '', slug: '' }} />
+        <FeatForm feat={{ name: '', description: '', slug: '' }} />
       </div>
     </Section>
   );

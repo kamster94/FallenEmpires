@@ -33,7 +33,7 @@ export default async function AdminLanguagesEdit({
           })}
           type='button'
         />
-        <SubSectionHeader>Editing: {language.title}</SubSectionHeader>
+        <SubSectionHeader>Editing: {language.name}</SubSectionHeader>
       </SubSection>
 
       <div>

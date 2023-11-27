@@ -33,7 +33,7 @@ export default async function AdminBackgroundsEdit({
           })}
           type='button'
         />
-        <SubSectionHeader>Editing: {background.title}</SubSectionHeader>
+        <SubSectionHeader>Editing: {background.name}</SubSectionHeader>
       </SubSection>
 
       <div>

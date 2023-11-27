@@ -32,7 +32,7 @@ export default async function AdminFeatsEdit({
           })}
           type='button'
         />
-        <SubSectionHeader>Editing: {feat.title}</SubSectionHeader>
+        <SubSectionHeader>Editing: {feat.name}</SubSectionHeader>
       </SubSection>
 
       <div>
