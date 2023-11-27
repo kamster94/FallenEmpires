@@ -15,6 +15,13 @@
       "when": 1700237970795,
       "tag": "0001_rich_skrulls",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1701035773645,
+      "tag": "0002_abnormal_wolfsbane",
+      "breakpoints": true
     }
   ]
 }

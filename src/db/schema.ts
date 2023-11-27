@@ -186,3 +186,17 @@ export const GeneralSettingsTable = pgTable('GeneralSettings', {
   key: varchar('Key', { length: 255 }).unique().notNull(),
   value: text('Value'),
 });
+
+export const BackgroundsTable = pgTable('Backgrounds', {
+  id: serial('Id').primaryKey(),
+  title: varchar('Title', { length: 255 }).notNull(),
+  slug: varchar('Slug', { length: 255 }).unique().notNull(),
+  text: text('Text'),
+});
+
+export const LanguagesTable = pgTable('Languages', {
+  id: serial('Id').primaryKey(),
+  title: varchar('Title', { length: 255 }).notNull(),
+  slug: varchar('Slug', { length: 255 }).unique().notNull(),
+  text: text('Text'),
+});

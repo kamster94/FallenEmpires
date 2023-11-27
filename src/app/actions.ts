@@ -11,10 +11,12 @@ import {
   Heritage,
   HeritageTag,
   NewAncestry,
+  NewBackground,
   NewCampaign,
   NewFeat,
   NewGeneralSetting,
   NewHeritage,
+  NewLanguage,
   NewPost,
   NewRulePage,
   NewSettingPage,
@@ -26,12 +28,14 @@ import {
 import {
   AncestriesTable,
   AncestriesTagsTable,
+  BackgroundsTable,
   CampaignsTable,
   FeatsTable,
   FeatsTagsTable,
   GeneralSettingsTable,
   HeritagesTable,
   HeritagesTagsTable,
+  LanguagesTable,
   PostsTable,
   RulePagesTable,
   SettingPagesTable,
@@ -372,5 +376,81 @@ export async function savePost(post: NewPost) {
 
 export async function deletePost(id: number) {
   await db.delete(PostsTable).where(eq(PostsTable.id, id));
+  revalidatePath('/');
+}
+
+export async function getAllBackgrounds() {
+  return db.query.BackgroundsTable.findMany();
+}
+
+export async function getBackground(slug: string) {
+  return db.query.BackgroundsTable.findFirst({
+    where: eq(BackgroundsTable.slug, slug),
+  });
+}
+
+export async function saveBackground(background: NewBackground) {
+  if (background.id) {
+    const updated = await db
+      .update(BackgroundsTable)
+      .set({
+        title: background.title,
+        slug: background.slug,
+        text: background.text,
+      })
+      .where(eq(BackgroundsTable.id, background.id))
+      .returning();
+    revalidatePath('/');
+    return updated;
+  } else {
+    const inserted = await db
+      .insert(BackgroundsTable)
+      .values(background)
+      .returning();
+    revalidatePath('/');
+    return inserted;
+  }
+}
+
+export async function deleteBackground(id: number) {
+  await db.delete(BackgroundsTable).where(eq(BackgroundsTable.id, id));
+  revalidatePath('/');
+}
+
+export async function getAllLanguages() {
+  return db.query.LanguagesTable.findMany();
+}
+
+export async function getLanguage(slug: string) {
+  return db.query.LanguagesTable.findFirst({
+    where: eq(LanguagesTable.slug, slug),
+  });
+}
+
+export async function saveLanguage(language: NewLanguage) {
+  if (language.id) {
+    const updated = await db
+      .update(LanguagesTable)
+      .set({
+        title: language.title,
+        slug: language.slug,
+        text: language.text,
+      })
+      .where(eq(LanguagesTable.id, language.id))
+      .returning();
+    revalidatePath('/');
+    return updated;
+  } else {
+    const inserted = await db
+      .insert(LanguagesTable)
+      .values(language)
+      .returning();
+    revalidatePath('/');
+    return inserted;
+  }
+}
+
+export async function deleteLanguage(id: number) {
+  await db.delete(LanguagesTable).where(eq(LanguagesTable.id, id));
   revalidatePath('/');
 }

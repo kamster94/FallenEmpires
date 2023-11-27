@@ -10,7 +10,9 @@ export default async function Home() {
   return (
     <Page>
       <PageHeader title='Age of Fallen Empires' />
-      <MarkdownContent>{homePageText?.value ?? ''}</MarkdownContent>
+      <MarkdownContent className='md:px-12'>
+        {homePageText?.value ?? ''}
+      </MarkdownContent>
     </Page>
   );
 }
