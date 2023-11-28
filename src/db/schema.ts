@@ -200,3 +200,17 @@ export const LanguagesTable = pgTable('Languages', {
   slug: varchar('Slug', { length: 255 }).unique().notNull(),
   description: text('Description'),
 });
+
+export const CulturesTable = pgTable('Cultures', {
+  id: serial('Id').primaryKey(),
+  name: varchar('Name', { length: 255 }).notNull(),
+  slug: varchar('Slug', { length: 255 }).unique().notNull(),
+  description: text('Description'),
+});
+
+export const LocationsTable = pgTable('Locations', {
+  id: serial('Id').primaryKey(),
+  name: varchar('Name', { length: 255 }).notNull(),
+  slug: varchar('Slug', { length: 255 }).unique().notNull(),
+  description: text('Description'),
+});

@@ -13,10 +13,12 @@ import {
   NewAncestry,
   NewBackground,
   NewCampaign,
+  NewCulture,
   NewFeat,
   NewGeneralSetting,
   NewHeritage,
   NewLanguage,
+  NewLocation,
   NewPost,
   NewRulePage,
   NewSettingPage,
@@ -30,12 +32,14 @@ import {
   AncestriesTagsTable,
   BackgroundsTable,
   CampaignsTable,
+  CulturesTable,
   FeatsTable,
   FeatsTagsTable,
   GeneralSettingsTable,
   HeritagesTable,
   HeritagesTagsTable,
   LanguagesTable,
+  LocationsTable,
   PostsTable,
   RulePagesTable,
   SettingPagesTable,
@@ -460,5 +464,78 @@ export async function saveLanguage(language: NewLanguage) {
 
 export async function deleteLanguage(id: number) {
   await db.delete(LanguagesTable).where(eq(LanguagesTable.id, id));
+  revalidatePath('/');
+}
+
+export async function getAllCultures() {
+  return db.query.CulturesTable.findMany();
+}
+
+export async function getCulture(slug: string) {
+  return db.query.CulturesTable.findFirst({
+    where: eq(CulturesTable.slug, slug),
+  });
+}
+
+export async function saveCulture(culture: NewCulture) {
+  if (culture.id) {
+    const updated = await db
+      .update(CulturesTable)
+      .set({
+        name: culture.name,
+        slug: culture.slug,
+        description: culture.description,
+      })
+      .where(eq(CulturesTable.id, culture.id))
+      .returning();
+    revalidatePath('/');
+    return updated;
+  } else {
+    const inserted = await db.insert(CulturesTable).values(culture).returning();
+    revalidatePath('/');
+    return inserted;
+  }
+}
+
+export async function deleteCulture(id: number) {
+  await db.delete(CulturesTable).where(eq(CulturesTable.id, id));
+  revalidatePath('/');
+}
+
+export async function getAllLocations() {
+  return db.query.LocationsTable.findMany();
+}
+
+export async function getLocation(slug: string) {
+  return db.query.LocationsTable.findFirst({
+    where: eq(LocationsTable.slug, slug),
+  });
+}
+
+export async function saveLocation(location: NewLocation) {
+  if (location.id) {
+    const updated = await db
+      .update(LocationsTable)
+      .set({
+        name: location.name,
+        slug: location.slug,
+        description: location.description,
+      })
+      .where(eq(LocationsTable.id, location.id))
+      .returning();
+    revalidatePath('/');
+    return updated;
+  } else {
+    const inserted = await db
+      .insert(LocationsTable)
+      .values(location)
+      .returning();
+    revalidatePath('/');
+    return inserted;
+  }
+}
+
+export async function deleteLocation(id: number) {
+  await db.delete(LocationsTable).where(eq(LocationsTable.id, id));
   revalidatePath('/');
 }

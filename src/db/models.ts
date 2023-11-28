@@ -63,6 +63,12 @@ export type NewBackground = InferInsertModel<typeof schema.BackgroundsTable>;
 export type Language = InferSelectModel<typeof schema.LanguagesTable>;
 export type NewLanguage = InferInsertModel<typeof schema.LanguagesTable>;
 
+export type Culture = InferSelectModel<typeof schema.CulturesTable>;
+export type NewCulture = InferInsertModel<typeof schema.CulturesTable>;
+
+export type Location = InferSelectModel<typeof schema.LocationsTable>;
+export type NewLocation = InferInsertModel<typeof schema.LocationsTable>;
+
 export const db = process.env.LOCAL_DATABASE_URL
   ? drizzlePostgres(postgres(process.env.LOCAL_DATABASE_URL), { schema })
   : drizzleVercel(sql, { schema });
