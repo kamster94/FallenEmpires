@@ -1,12 +1,14 @@
 import Section from '@/components/Section';
 import SectionHeader from '@/components/SectionHeader';
-import GeneralSettingsForm from '@/components/Forms/GeneralSettingsForm';
+import GeneralSettingsAdminTable from '@/components/Tables/GeneralSettingsAdminTable';
 
 export default function AdminGeneralSettings() {
   return (
     <Section>
-      <SectionHeader>General Settings</SectionHeader>
-      <GeneralSettingsForm />
+      <SectionHeader>GeneralSettings</SectionHeader>
+      <div className='space-y-2'>
+        <GeneralSettingsAdminTable />
+      </div>
     </Section>
   );
 }

@@ -1,40 +1,34 @@
 'use client';
 
-import React, { Suspense, useEffect, useState } from 'react';
+import React, { Suspense, useState } from 'react';
 import Label from '@/components/Forms/Label';
 import dynamic from 'next/dynamic';
-import { NewGeneralSetting } from '@/db/models';
-import { getGeneralSetting, saveGeneralSetting } from '@/app/actions';
-import { GeneralSettingKey } from '@/enums';
+import { GeneralSetting } from '@/db/models';
+import { saveGeneralSetting } from '@/app/actions';
 import Form from '@/components/Forms/Form';
 import FormSection from '@/components/Forms/FormSection';
 import FormFooter from '@/components/Forms/FormFooter';
+import { useRouter } from 'next/navigation';
+import useRoute from '@/hooks/useRoute';
+import { RoutePath } from '@/enums';
 
 const MarkdownEditor = dynamic(
   () => import('@/components/Markdown/MarkdownEditor'),
   { ssr: false }
 );
 
-const GeneralSettingsForm = () => {
-  const homePageText: NewGeneralSetting = {
-    key: GeneralSettingKey.HomePageText,
-    value: '',
-  };
-  const [workingHomePageText, setWorkingHomePageText] =
-    useState<NewGeneralSetting>(homePageText);
+interface Props {
+  generalSetting: GeneralSetting;
+}
 
-  useEffect(() => {
-    getGeneralSetting(GeneralSettingKey.HomePageText).then(
-      (homePageTextSetting) => {
-        if (homePageTextSetting) {
-          setWorkingHomePageText(homePageTextSetting);
-        }
-      }
-    );
-  }, []);
+const GeneralSettingsForm = ({ generalSetting }: Props) => {
+  const router = useRouter();
+  const { buildRoute } = useRoute();
+  const [workingGeneralSetting, setWorkingGeneralSetting] =
+    useState<GeneralSetting>(generalSetting);
 
   function handleChangeWorkingHomePageTextValues({ value }: { value: string }) {
-    setWorkingHomePageText((prevState) => {
+    setWorkingGeneralSetting((prevState) => {
       return {
         ...prevState,
         value,
@@ -43,7 +37,13 @@ const GeneralSettingsForm = () => {
   }
 
   async function handleSave() {
-    await saveGeneralSetting(workingHomePageText);
+    await saveGeneralSetting(workingGeneralSetting);
+    router.push(
+      buildRoute({
+        category: RoutePath.GeneralSettings,
+        admin: true,
+      })
+    );
   }
 
   return (
@@ -52,7 +52,7 @@ const GeneralSettingsForm = () => {
         <Label>Home Page Text</Label>
         <Suspense>
           <MarkdownEditor
-            markdown={workingHomePageText.value ?? ''}
+            markdown={workingGeneralSetting.value ?? ''}
             onChange={(markdown) =>
               handleChangeWorkingHomePageTextValues({ value: markdown })
             }

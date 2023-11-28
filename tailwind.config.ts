@@ -11,11 +11,6 @@ const config: Config = {
       fontFamily: {
         sans: ['var(--font-eczar)'],
       },
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-      },
       colors: {
         primary: '#5d0000',
         secondary: '#eae3d8',

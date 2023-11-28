@@ -135,6 +135,10 @@ export async function deleteCampaign(id: number) {
   revalidatePath('/');
 }
 
+export async function getAllGeneralSettings(): Promise<GeneralSetting[]> {
+  return db.query.GeneralSettingsTable.findMany();
+}
+
 export async function getGeneralSetting(
   key: string
 ): Promise<GeneralSetting | undefined> {
